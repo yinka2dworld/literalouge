@@ -15,9 +15,11 @@ const startServer = async () => {
   try {
     // Create an ApolloServer instance
     const server = new ApolloServer({
-      typeDefs, // GraphQL schema definition
-      resolvers, // GraphQL resolvers
-      context: ({ req, res }) => ({ req, res }), // Provide context to resolvers
+      typeDefs, 
+      resolvers, 
+      cache: 'bounded', 
+      persistedQueries: false,
+      context: ({ req, res }) => ({ req, res }), 
     });
 
     // Start the ApolloServer

@@ -1,4 +1,5 @@
 import '../css/layout.css';
+import okinLogo from "../assets/Okinlm.svg"
 import TelegramIcon from '@mui/icons-material/Telegram';
 import XIcon from '@mui/icons-material/X';
 import YouTubeIcon from '@mui/icons-material/YouTube';
@@ -16,6 +17,8 @@ const Footer = () => {
 
 <footer>  
     <hr/>
+            
+  <img src={okinLogo} alt="okinLogo" className='okinLogo' />
 
     <div className="grid" style={{display:'flex', justifyContent:'center'}}>
    <Link className="footer-link"  style={{color:"#070C70"}} to="" >About</Link>
@@ -23,7 +26,7 @@ const Footer = () => {
    <Link className="footer-link" style={{color:"#070C70"}} to="" >Cookie Policy</Link>
    <Link className="footer-link" style={{color:"#070C70"}} to="/login" >Login</Link> 
         </div>
-
+        
     <div className="crm">
         <div style={{textAlign:'center', marginBottom:'20px'}}>
         <Link to='' className="media-link" style={{color:'#070C70', marginRight:'10px'}} ><TelegramIcon fontSize="large"/></Link> 
@@ -33,7 +36,7 @@ const Footer = () => {
         </div>
     </div>
     
-      <Link href="" style={{color:"#070C70"}} className="footer-link" >&copy; {year} CodeX - All Rights Reserved | Ọkín technologies</Link> 
+      <Link href="https://okin.onrender.com/" style={{color:"#070C70"}} className="footer-link" >&copy; {year} CodeX - All Rights Reserved | Ọkín technologies</Link> 
       </footer> 
 </>
     )

@@ -1,0 +1,18 @@
+{
+    "sourceFile": "client/static.json",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1735491541063,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1735491541063,
+            "name": "Commit-0",
+            "content": "{\r\n    \"routes\": [\r\n      {\r\n        \"src\": \"/(.*)\",\r\n        \"dest\": \"/index.html\"\r\n      }\r\n    ]\r\n  }\r\n  "
+        }
+    ]
+}

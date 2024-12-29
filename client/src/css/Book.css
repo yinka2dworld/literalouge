@@ -1,0 +1,140 @@
+/* Main Book Detail Container */
+.book-detail {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f0f4f8;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.book-photo {
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.book-info {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.book-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #070C70;
+}
+
+.book-author {
+    font-size: 1.2rem;
+    color: #ff1493;
+    margin-top: 5px;
+}
+
+.book-description {
+    text-align: justify;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.book-description h3 {
+    color: #070C70;
+    margin-bottom: 10px;
+}
+.desc{
+    color: #ff1493;
+}
+
+.book-meta p {
+    margin: 5px 0;
+    font-size: 1rem;
+    color: #666;
+}
+
+.book-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 15px;
+    background: #070C70;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.book-link:hover {
+    background: #ff1493;
+    color: #fff;
+}
+
+/* Admin Icons Section */
+.admin-icons {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 25px;
+}
+.buttons-div{
+    display: flex;
+    gap: 510px;
+}
+
+.icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.icon:hover {
+    transform: scale(1.2);
+}
+
+.delete-icon {
+    color: #ff4d4d;
+}
+
+.edit-icon {
+    color: #4d94ff;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .book-detail {
+        padding: 15px;
+    }
+
+    .book-photo {
+        max-height: 300px;
+    }
+
+    .book-title {
+        font-size: 1.5rem;
+    }
+
+    .book-author {
+        font-size: 1rem;
+    }
+
+    .book-meta p {
+        font-size: 0.9rem;
+    }
+
+    .book-link {
+        font-size: 0.9rem;
+    }
+
+    .admin-icons {
+        gap: 15px;
+    }
+
+    .icon {
+        font-size: 1.2rem;
+    }
+    .buttons-div{
+        gap: 200px;
+    }
+}

@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Freehand:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  body {
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f8f8;
+  }
+
+
+.errorMsg{
+    text-align: center;
+    margin-left: 120px;
+    background-color:rgb(241, 208, 208);
+    width: 192px;
+    padding: 10px;
+    border-radius:10px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: red;
+    font-size: 15px;
+    color: red;
+}
+.successMsg{
+    text-align: center;
+    margin-left: 120px;
+    background-color:rgb(219, 236, 229);
+    width: 192px;
+    padding: 10px;
+    border-radius:10px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: green;
+    font-size: 15px;
+    color: green;
+}

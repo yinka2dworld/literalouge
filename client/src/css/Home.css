@@ -1,0 +1,132 @@
+/* Overall Layout */
+.home {
+    display: flex;
+    flex-direction: column;
+    background-color: #f8f9fa;
+    font-family: 'Arial', sans-serif;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 20px;
+}
+
+/* Sidebar */
+.categories-sidebar {
+    width: 250px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Catalog Section */
+.catalog-section {
+    flex-grow: 1;
+}
+
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 books per row by default */
+    gap: 100px; /* Reduce the space between books */
+    width: calc(100% - 100px); /* Make catalog grid take the remaining width */
+    margin: 30px 30px;
+ }
+
+
+.catalog-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.catalog-link:hover .Books {
+    transform: scale(1.05);
+    transition: 0.3s ease;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.pag {
+    padding: 10px 20px;
+    margin: 0 5px;
+    background-color: #070c70;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    border-radius: 100%;
+    width: 60px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.pag:hover:not(:disabled) {
+    background-color: #ff1493;
+}
+
+.pag:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.page-number {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Add Book Button */
+.addBook {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ff1493;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.addBook:hover {
+    transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .catalog-grid {
+        grid-template-columns: 1fr;
+        gap: 3em;
+        margin:0 auto 0;
+        margin-bottom: 4em;
+    }
+
+    .categories-sidebar {
+        width: 100%;
+        margin:0 auto 0;
+        max-width: 20rem;
+    }
+
+    .catalog-section {
+        margin-top: 4em;
+    }
+}

@@ -1,0 +1,182 @@
+/* Library1n image */
+.Library1 {
+ width:1340px;
+   height: 534px;
+   margin-left: 5px;
+  }
+  .motto {
+     width: 653px; 
+    color: #070C70; 
+    font-size: 96px; 
+  font-family: Poppins; 
+  font-weight: 500;
+   letter-spacing: 1.92px; 
+   word-wrap: break-word;
+   animation: text-shadow 1.5s ease-in-out ;
+  } 
+.motto:hover {
+    animation:  text-shadow 1.5s ease-in-out  infinite;
+}
+@keyframes text-shadow {
+    0% {  
+        transform: translateY(0);
+        text-shadow: 
+            0 0 0 #0c2ffb, 
+            0 0 0 #2cfcfd, 
+            0 0 0 #fb203b, 
+            0 0 0 #fefc4b;
+    }
+
+    20% {  
+        transform: translateY(-1em);
+        text-shadow: 
+            0 0.125em 0 #0c2ffb, 
+            0 0.25em 0 #2cfcfd, 
+            0 -0.125em 0 #fb203b, 
+            0 -0.25em 0 #fefc4b;
+    }
+
+    40% {  
+        transform: translateY(0.5em);
+        text-shadow: 
+            0 -0.0625em 0 #0c2ffb, 
+            0 -0.125em 0 #2cfcfd, 
+            0 0.0625em 0 #fb203b, 
+            0 0.125em 0 #fefc4b;
+    }
+    
+   60% {
+        transform: translateY(-0.25em);
+        text-shadow: 
+            0 0.03125em 0 #0c2ffb, 
+            0 0.0625em 0 #2cfcfd, 
+            0 -0.03125em 0 #fb203b, 
+            0 -0.0625em 0 #fefc4b;
+    }
+
+    80% {  
+        transform: translateY(0);
+        text-shadow: 
+            0 0 0 #0c2ffb, 
+            0 0 0 #2cfcfd, 
+            0 0 0 #fb203b, 
+            0 0 0 #fefc4b;
+    }
+}
+  .mottoDiv{
+    mix-blend-mode: darken;
+    display: flex;
+    position: absolute;
+    isolation: isolate;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 0px;
+    box-sizing: border-box;
+    width: 678px;
+    height: 85px;
+ bottom: 500px;
+ left: 50px; 
+    }
+  /* Group48 */
+  .Group48 {
+    mix-blend-mode: darken;
+    display: flex;
+    position: absolute;
+    isolation: isolate;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 0px;
+    box-sizing: border-box;
+    width: 278px;
+    height: 85px;
+   bottom: 170px;
+  }
+  /* Rectangle12 */
+  .Rectangle12 {
+    border: 3px solid #ff1493;
+    box-sizing: border-box;
+    border-radius: 20px;
+    width: 278px;
+    height: 85px;
+    position: absolute;
+    left: 985px;
+    top: 80px;
+  }
+  .Group47 {
+    display: flex;
+    position: absolute;
+    isolation: isolate;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 0px;
+    box-sizing: border-box;
+    width: 229px;
+    height: 48px;
+    left: 1013px;
+    top: 95px;
+  }
+  .ExploreBooks {
+    text-align: left;
+    white-space: pre-wrap;
+    font-synthesis: none;
+    color: rgba(7, 12, 112, 1);
+    font-style: normal;
+    font-family: Poppins;
+    font-weight: 400;
+    font-size: 30px;
+    letter-spacing: 0.64px;
+    text-decoration: none;
+    text-transform: none;
+    position: absolute;
+  }
+  .ExploreBooks:hover{
+text-decoration:underline;
+  }
+
+  
+
+  /* Mobile style */
+@media only screen and (max-width:600px){
+  .main{
+    overflow-x: auto; 
+    overflow-y: auto;
+    white-space: pre-wrap;
+  }
+  .Library1{
+    overflow-x: auto; 
+    white-space: pre-wrap;
+ height:760px;
+  width:450px;
+  margin-left: -8px;
+ }
+ .motto{
+font-size: 2.9em;
+ }
+ .mottoDiv{
+  width: 80px;
+  height: 40px;
+  left:20px;
+  top: 100px;
+ }
+ .Group47 {
+  bottom: 120px;
+  left: 90px;
+}
+.ExploreBooks{
+  font-size: 25px;
+  top: 55px;
+  text-align: center;
+  
+}
+.Rectangle12 {
+  width: 210px;
+  height: 50px;
+  left: 75px;
+  top: 140px;
+}
+}
+  
+  

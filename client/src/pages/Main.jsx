@@ -4,7 +4,7 @@ import Navbar from '../layout/Navbar.jsx'
 
 
 const Main = () => {
-  	return (
+	return (
     <div className="main">
 <Navbar/>
 <div className='mottoDiv'>

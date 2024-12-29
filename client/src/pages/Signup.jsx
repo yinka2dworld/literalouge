@@ -75,7 +75,7 @@ value={password}  onChange={(e) => setPassword(e.target.value)}
 
 <div className='acc' >
 <p style={{'color':'#070C70'}}>Don't have an account?</p>  
-<a  href="/admin/login" className='form-link'>Login</a>
+<a  href="/login" className='form-link'>Login</a>
 </div>
      </div>
 

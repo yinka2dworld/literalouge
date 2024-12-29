@@ -1,0 +1,26 @@
+{
+    "sourceFile": "client/src/pages/Main.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1735461734213,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1735462975841,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,10 @@\n import Library1Image from '../assets/library.jpg';\r\n import Navbar from '../layout/Navbar.jsx'\r\n \r\n \r\n-const Main = () => {return (\r\n+const Main = () => {\r\n+\treturn (\r\n     <div className=\"main\">\r\n <Navbar/>\r\n <div className='mottoDiv'>\r\n \t<p className='motto' >Orating African Literature</p>\r\n@@ -14,9 +15,9 @@\n <div className='Group48'>\r\n <div className='Rectangle12'>\r\n </div>\r\n <div className='Group47'>\r\n-<a className='ExploreBooks' href='/home'>Explore books</a>\r\n+<a className='ExploreBooks' href='/login'>Explore books</a>\r\n </div>\r\n </div>\r\n \r\n </div>\r\n"
+                },
+                {
+                    "date": 1735462985784,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n <div className='Group48'>\r\n <div className='Rectangle12'>\r\n </div>\r\n <div className='Group47'>\r\n-<a className='ExploreBooks' href='/login'>Explore books</a>\r\n+<a className='ExploreBooks' href='/home'>Explore books</a>\r\n </div>\r\n </div>\r\n \r\n </div>\r\n"
+                }
+            ],
+            "date": 1735461734213,
+            "name": "Commit-0",
+            "content": "import  '../css/Main.css';\r\nimport Library1Image from '../assets/library.jpg';\r\nimport Navbar from '../layout/Navbar.jsx'\r\n\r\n\r\nconst Main = () => {return (\r\n    <div className=\"main\">\r\n<Navbar/>\r\n<div className='mottoDiv'>\r\n\t<p className='motto' >Orating African Literature</p>\r\n</div>\r\n\r\n<img className='Library1'  src={Library1Image} loading='lazy' alt=\"library 1\"/>\r\n<div className='Group48'>\r\n<div className='Rectangle12'>\r\n</div>\r\n<div className='Group47'>\r\n<a className='ExploreBooks' href='/home'>Explore books</a>\r\n</div>\r\n</div>\r\n\r\n</div>\r\n)};\r\n\r\nexport default Main;\r\n"
+        }
+    ]
+}

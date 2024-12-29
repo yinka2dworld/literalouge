@@ -8,8 +8,7 @@ import { createUploadLink } from 'apollo-upload-client';
 
 
 const uploadLink = createUploadLink({
-  uri: 'http://localhost:4000/graphql',
-  
+  uri: import.meta.env.VITE_SERVER_URL, 
 });
 
 const client = new ApolloClient({

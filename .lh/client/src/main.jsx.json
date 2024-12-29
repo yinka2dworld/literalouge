@@ -1,0 +1,54 @@
+{
+    "sourceFile": "client/src/main.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 9,
+            "patches": [
+                {
+                    "date": 1735461485703,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1735461491709,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,28 @@\n+import React from 'react'\n+import ReactDOM from 'react-dom/client'\n+import App from './App.jsx'\n+import './index.css'\n+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';\n+import { createUploadLink } from 'apollo-upload-client';\n+\n+\n+\n+const uploadLink = createUploadLink({\n+  uri: PROCES',\n+  \n+});\n+\n+const client = new ApolloClient({\n+  link: uploadLink,\n+  cache: new InMemoryCache(),\n+});\n+\n+\n+ReactDOM.createRoot(document.getElementById('root')).render(\n+  <ApolloProvider client={client}>\n+  <React.StrictMode>\n+    <App />\n+  </React.StrictMode>,\n+  </ApolloProvider>,\n+)\n+\n"
+                },
+                {
+                    "date": 1735461497244,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n \n \n \n const uploadLink = createUploadLink({\n-  uri: PROCES',\n+  uri: pro',\n   \n });\n \n const client = new ApolloClient({\n@@ -25,32 +25,4 @@\n   </React.StrictMode>,\n   </ApolloProvider>,\n )\n \n-import React from 'react'\n-import ReactDOM from 'react-dom/client'\n-import App from './App.jsx'\n-import './index.css'\n-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';\n-import { createUploadLink } from 'apollo-upload-client';\n-\n-\n-\n-const uploadLink = createUploadLink({\n-  uri: ',\n-  \n-});\n-\n-const client = new ApolloClient({\n-  link: uploadLink,\n-  cache: new InMemoryCache(),\n-});\n-\n-\n-ReactDOM.createRoot(document.getElementById('root')).render(\n-  <ApolloProvider client={client}>\n-  <React.StrictMode>\n-    <App />\n-  </React.StrictMode>,\n-  </ApolloProvider>,\n-)\n-\n"
+                },
+                {
+                    "date": 1735461502432,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n \n \n \n const uploadLink = createUploadLink({\n-  uri: pro',\n+  uri: ProcessingInstruction.',\n   \n });\n \n const client = new ApolloClient({\n"
+                },
+                {
+                    "date": 1735461510075,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,28 @@\n+import React from 'react'\n+import ReactDOM from 'react-dom/client'\n+import App from './App.jsx'\n+import './index.css'\n+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';\n+import { createUploadLink } from 'apollo-upload-client';\n+\n+\n+\n+const uploadLink = createUploadLink({\n+  uri: process.env',\n+  \n+});\n+\n+const client = new ApolloClient({\n+  link: uploadLink,\n+  cache: new InMemoryCache(),\n+});\n+\n+\n+ReactDOM.createRoot(document.getElementById('root')).render(\n+  <ApolloProvider client={client}>\n+  <React.StrictMode>\n+    <App />\n+  </React.StrictMode>,\n+  </ApolloProvider>,\n+)\n+\n"
+                },
+                {
+                    "date": 1735461581771,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,28 @@\n+import React from 'react'\n+import ReactDOM from 'react-dom/client'\n+import App from './App.jsx'\n+import './index.css'\n+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';\n+import { createUploadLink } from 'apollo-upload-client';\n+\n+\n+\n+const uploadLink = createUploadLink({\n+  uri: process.env.REACT_APP_BACKEND_URL',\n+  \n+});\n+\n+const client = new ApolloClient({\n+  link: uploadLink,\n+  cache: new InMemoryCache(),\n+});\n+\n+\n+ReactDOM.createRoot(document.getElementById('root')).render(\n+  <ApolloProvider client={client}>\n+  <React.StrictMode>\n+    <App />\n+  </React.StrictMode>,\n+  </ApolloProvider>,\n+)\n+\n"
+                },
+                {
+                    "date": 1735461600240,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n \n \n \n const uploadLink = createUploadLink({\n-  uri: process.env.REACT_APP_BACKEND_URL',\n+  uri: process.env.REACT_APP_BACKEND_URL,\n   \n });\n \n const client = new ApolloClient({\n@@ -25,60 +25,4 @@\n   </React.StrictMode>,\n   </ApolloProvider>,\n )\n \n-import React from 'react'\n-import ReactDOM from 'react-dom/client'\n-import App from './App.jsx'\n-import './index.css'\n-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';\n-import { createUploadLink } from 'apollo-upload-client';\n-\n-\n-\n-const uploadLink = createUploadLink({\n-  uri: process.env',\n-  \n-});\n-\n-const client = new ApolloClient({\n-  link: uploadLink,\n-  cache: new InMemoryCache(),\n-});\n-\n-\n-ReactDOM.createRoot(document.getElementById('root')).render(\n-  <ApolloProvider client={client}>\n-  <React.StrictMode>\n-    <App />\n-  </React.StrictMode>,\n-  </ApolloProvider>,\n-)\n-\n-import React from 'react'\n-import ReactDOM from 'react-dom/client'\n-import App from './App.jsx'\n-import './index.css'\n-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';\n-import { createUploadLink } from 'apollo-upload-client';\n-\n-\n-\n-const uploadLink = createUploadLink({\n-  uri: ProcessingInstruction.',\n-  \n-});\n-\n-const client = new ApolloClient({\n-  link: uploadLink,\n-  cache: new InMemoryCache(),\n-});\n-\n-\n-ReactDOM.createRoot(document.getElementById('root')).render(\n-  <ApolloProvider client={client}>\n-  <React.StrictMode>\n-    <App />\n-  </React.StrictMode>,\n-  </ApolloProvider>,\n-)\n-\n"
+                },
+                {
+                    "date": 1735461620971,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n \n \n \n const uploadLink = createUploadLink({\n-  uri: process.env.REACT_APP_BACKEND_URL,\n+  uri: ',\n   \n });\n \n const client = new ApolloClient({\n"
+                },
+                {
+                    "date": 1735461631350,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n \n \n \n const uploadLink = createUploadLink({\n-  uri: process.env.REACT_APP_BACKEND_URL',\n+  uri: process.env.',\n   \n });\n \n const client = new ApolloClient({\n"
+                },
+                {
+                    "date": 1735461638237,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,28 @@\n+import React from 'react'\n+import ReactDOM from 'react-dom/client'\n+import App from './App.jsx'\n+import './index.css'\n+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';\n+import { createUploadLink } from 'apollo-upload-client';\n+\n+\n+\n+const uploadLink = createUploadLink({\n+  uri: ',\n+  \n+});\n+\n+const client = new ApolloClient({\n+  link: uploadLink,\n+  cache: new InMemoryCache(),\n+});\n+\n+\n+ReactDOM.createRoot(document.getElementById('root')).render(\n+  <ApolloProvider client={client}>\n+  <React.StrictMode>\n+    <App />\n+  </React.StrictMode>,\n+  </ApolloProvider>,\n+)\n+\n"
+                }
+            ],
+            "date": 1735461485703,
+            "name": "Commit-0",
+            "content": "import React from 'react'\nimport ReactDOM from 'react-dom/client'\nimport App from './App.jsx'\nimport './index.css'\nimport { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';\nimport { createUploadLink } from 'apollo-upload-client';\n\n\n\nconst uploadLink = createUploadLink({\n  uri: ',\n  \n});\n\nconst client = new ApolloClient({\n  link: uploadLink,\n  cache: new InMemoryCache(),\n});\n\n\nReactDOM.createRoot(document.getElementById('root')).render(\n  <ApolloProvider client={client}>\n  <React.StrictMode>\n    <App />\n  </React.StrictMode>,\n  </ApolloProvider>,\n)\n\n"
+        }
+    ]
+}

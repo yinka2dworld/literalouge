@@ -1,9 +1,16 @@
 {
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "/index.html"
-      }
-    ]
+  "version": 1,
+  "cleanUrls": true,
+  "public": "./dist",
+  "rewrites": [
+    {
+      "source": "/**",
+      "destination": "/index.html"
+    }
+  ],
+  "headers": {
+    "/assets/*": {
+      "Cache-Control": "max-age=31536000, immutable"
+    }
   }
-  
+}

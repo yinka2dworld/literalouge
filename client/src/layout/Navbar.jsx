@@ -1,4 +1,4 @@
-import logo from "../assets/audioLogo.png"
+import logo from "/assets/audioLogo.png"
 import '../css/layout.css';
 
 

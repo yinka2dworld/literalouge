@@ -1,0 +1,18 @@
+{
+    "sourceFile": "client/src/layout/Footer.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1735999276987,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1735999276987,
+            "name": "Commit-0",
+            "content": "import '../css/layout.css';\r\nimport okinLogo from \"/assets/Okinlm.svg\"\r\nimport TelegramIcon from '@mui/icons-material/Telegram';\r\nimport XIcon from '@mui/icons-material/X';\r\nimport YouTubeIcon from '@mui/icons-material/YouTube';\r\nimport FacebookIcon from '@mui/icons-material/Facebook';\r\nimport {Link} from \"react-router-dom\";\r\n\r\n\r\n\r\nconst Footer = () => {\r\n    const year = new Date().getFullYear()\r\n\r\n    return (\r\n<>\r\n\r\n\r\n<footer>  \r\n    <hr/>\r\n            \r\n  <img src={okinLogo} alt=\"okinLogo\" className='okinLogo' />\r\n\r\n    <div className=\"grid\" style={{display:'flex', justifyContent:'center'}}>\r\n   <Link className=\"footer-link\"  style={{color:\"#070C70\"}} to=\"\" >About</Link>\r\n   <Link className=\"footer-link\" style={{color:\"#070C70\"}} to=\"\" >Privacy Policy</Link> \r\n   <Link className=\"footer-link\" style={{color:\"#070C70\"}} to=\"\" >Cookie Policy</Link>\r\n   <Link className=\"footer-link\" style={{color:\"#070C70\"}} to=\"/login\" >Login</Link> \r\n        </div>\r\n        \r\n    <div className=\"crm\">\r\n        <div style={{textAlign:'center', marginBottom:'20px'}}>\r\n        <Link to='' className=\"media-link\" style={{color:'#070C70', marginRight:'10px'}} ><TelegramIcon fontSize=\"large\"/></Link> \r\n        <Link to='' className=\"media-link\" style={{color:'red', marginRight:'10px'}}><YouTubeIcon fontSize=\"large\"/></Link> \r\n        <Link to='' className=\"media-link\" style={{color:'#6767ff', marginRight:'10px'}}><FacebookIcon fontSize=\"large\"/></Link>\r\n        <Link to='' className=\"media-link\" style={{color:'#070C70'}} ><XIcon  fontSize=\"large\"/></Link> \r\n        </div>\r\n    </div>\r\n    \r\n      <Link href=\"https://okin.onrender.com/\" style={{color:\"#070C70\"}} className=\"footer-link\" >&copy; {year} CodeX - All Rights Reserved | Ọkín technologies</Link> \r\n      </footer> \r\n</>\r\n    )\r\n}\r\n\r\nexport default Footer;"
+        }
+    ]
+}

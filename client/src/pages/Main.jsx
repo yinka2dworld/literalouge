@@ -1,5 +1,5 @@
 import  '../css/Main.css';
-import Library1Image from '../assets/library.jpg';
+import Library1Image from '/assets/library.jpg';
 import Navbar from '../layout/Navbar.jsx'
 
 

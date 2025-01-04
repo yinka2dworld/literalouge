@@ -1,7 +1,7 @@
 import '../css/Auth.css'
 import { useState } from 'react';
 import {useNavigate} from "react-router-dom";
-import libraryWay from '../assets/libraryWay.jpg';
+import libraryWay from '/assets/libraryWay.jpg';
 import { LOGIN } from "../graphql/mutations.js"
 import { useMutation } from '@apollo/client';
 
@@ -58,7 +58,7 @@ value={password}     onChange={(e) => setPassword(e.target.value)}
 </form>
 
          <div className='acc' >
-<p style={{'color':'#070C70'}}> Don't have an account?</p>  
+<p style={{'color':'#070C70'}}>Dont have an account?</p>  
 <a href="/signup" className='form-link'>Signup</a>
 </div>
     </div>

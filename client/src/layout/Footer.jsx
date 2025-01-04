@@ -1,5 +1,5 @@
 import '../css/layout.css';
-import okinLogo from "../assets/Okinlm.svg"
+import okinLogo from "/assets/Okinlm.svg"
 import TelegramIcon from '@mui/icons-material/Telegram';
 import XIcon from '@mui/icons-material/X';
 import YouTubeIcon from '@mui/icons-material/YouTube';

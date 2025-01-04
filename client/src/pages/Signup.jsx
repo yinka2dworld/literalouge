@@ -1,5 +1,5 @@
 import '../css/Auth.css'
-import libraryWay from '../assets/libraryWay.jpg';
+import libraryWay from '/assets/libraryWay.jpg';
 import { useState } from 'react';
 import {useNavigate} from "react-router-dom";
 import { SIGNUP } from "../graphql/mutations.js"
@@ -26,7 +26,6 @@ const handleSignup = async (e) => {
     myHistory('/login')
     } catch (error) {
       console.error('Signup error:', error.message);
-      console.log( data.signup);
     }
  }
 
@@ -74,7 +73,7 @@ value={password}  onChange={(e) => setPassword(e.target.value)}
 </form>
 
 <div className='acc' >
-<p style={{'color':'#070C70'}}>Don't have an account?</p>  
+<p style={{'color':'#070C70'}}>Dont have an account?</p>  
 <a  href="/login" className='form-link'>Login</a>
 </div>
      </div>

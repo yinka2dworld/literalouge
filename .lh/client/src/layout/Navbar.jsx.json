@@ -1,0 +1,18 @@
+{
+    "sourceFile": "client/src/layout/Navbar.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1735999308586,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1735999308586,
+            "name": "Commit-0",
+            "content": "import logo from \"/assets/audioLogo.png\"\r\nimport '../css/layout.css';\r\n\r\n\r\nconst Navbar = () => {\r\nreturn(\r\n<>\r\n<div className=\"navbar\" >\r\n  <img src={logo} alt=\"logo\"  className=\"logo\" />\r\n  <div className=\"siteName\">\r\n    <p style={{\"color\":\"#ff1493\"}}>L</p> \r\n    <p style={{\"color\":\"#070C70\"}}>i</p>  \r\n    <p style={{\"color\":\"#ff1493\"}}>t</p>\r\n    <p style={{\"color\":\"#070C70\"}}>e</p>  \r\n    <p style={{\"color\":\"#ff1493\"}}>r</p>\r\n    <p style={{\"color\":\"#070C70\"}}>a</p>\r\n    <p style={{\"color\":\"#ff1493\"}}>l</p>  \r\n    <p style={{\"color\":\"#070C70\"}}>o</p>  \r\n    <p style={{\"color\":\"#ff1493\"}}>u</p>  \r\n    <p style={{\"color\":\"#070C70\"}}>g</p>\r\n    <p style={{\"color\":\"#ff1493\"}}>e</p>\r\n  </div>\r\n  </div> \r\n</>\r\n)}\r\nexport default Navbar;"
+        }
+    ]
+}

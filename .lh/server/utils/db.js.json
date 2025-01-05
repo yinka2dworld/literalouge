@@ -1,0 +1,26 @@
+{
+    "sourceFile": "server/utils/db.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1736059048742,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1736059054890,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,32 @@\n+import { Sequelize } from 'sequelize';\r\n+import dotenv from 'dotenv';\r\n+\r\n+dotenv.config();\r\n+\r\n+const sequelize = new Sequelize(process.env.DB_URL, {\r\n+  dialect: 'postgres', // Ensure you specify the correct dialect\r\n+  dialectOptions: {\r\n+    ssl: {\r\n+      require: true, // Render databases require SSL connections\r\n+      rejectUnauthorized: false,\r\n+    },\r\n+  },\r\n+});\r\n+\r\n+const initializeDatabase = async () => {\r\n+  try {\r\n+    await sequelize.authenticate();\r\n+    console.log('Database connection established successfully.');\r\n+\r\n+    // Sync all models\r\n+    await sequelize.sync({ alter: true });\r\n+    console.log('All models were synchronized successfully.');\r\n+  } catch (error) {\r\n+    console.error('Error connecting to the database or synchronizing models:', error);\r\n+  }\r\n+};\r\n+\r\n+\r\n+initializeDatabase();\r\n+\r\n+export default sequelize;\r\n"
+                },
+                {
+                    "date": 1736059062083,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,12 +3,12 @@\n \r\n dotenv.config();\r\n \r\n const sequelize = new Sequelize(process.env.DB_URL, {\r\n-  dialect: 'postgres', // Ensure you specify the correct dialect\r\n+  dialect: 'postgres',\r\n   dialectOptions: {\r\n     ssl: {\r\n-      require: true, // Render databases require SSL connections\r\n+      require: true,\r\n       rejectUnauthorized: false,\r\n     },\r\n   },\r\n });\r\n@@ -29,30 +29,4 @@\n \r\n initializeDatabase();\r\n \r\n export default sequelize;\r\n-import { Sequelize } from 'sequelize';\r\n-import dotenv from 'dotenv';\r\n-\r\n-dotenv.config();\r\n-\r\n-const sequelize = new Sequelize(process.env.DB_URL, {\r\n-\r\n-});\r\n-\r\n-const initializeDatabase = async () => {\r\n-  try {\r\n-    await sequelize.authenticate();\r\n-    console.log('Database connection established successfully.');\r\n-\r\n-    // Sync all models\r\n-    await sequelize.sync({ alter: true });\r\n-    console.log('All models were synchronized successfully.');\r\n-  } catch (error) {\r\n-    console.error('Error connecting to the database or synchronizing models:', error);\r\n-  }\r\n-};\r\n-\r\n-\r\n-initializeDatabase();\r\n-\r\n-export default sequelize;\r\n"
+                }
+            ],
+            "date": 1736059048742,
+            "name": "Commit-0",
+            "content": "import { Sequelize } from 'sequelize';\r\nimport dotenv from 'dotenv';\r\n\r\ndotenv.config();\r\n\r\nconst sequelize = new Sequelize(process.env.DB_URL, {\r\n\r\n});\r\n\r\nconst initializeDatabase = async () => {\r\n  try {\r\n    await sequelize.authenticate();\r\n    console.log('Database connection established successfully.');\r\n\r\n    // Sync all models\r\n    await sequelize.sync({ alter: true });\r\n    console.log('All models were synchronized successfully.');\r\n  } catch (error) {\r\n    console.error('Error connecting to the database or synchronizing models:', error);\r\n  }\r\n};\r\n\r\n\r\ninitializeDatabase();\r\n\r\nexport default sequelize;\r\n"
+        }
+    ]
+}

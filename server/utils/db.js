@@ -3,10 +3,16 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const sequelize = new Sequelize('literalouge', process.env.DB_USERNAME, process.env.DB_PASSWORD, {
-  dialect: 'mysql',
-  host: process.env.DB_HOST,
-  port: 3306,
+const sequelize = new Sequelize(process.env.DB_URL, {
+  dialect: 'posrtgres',
+  protocol: 'postgres',
+  logging: false,
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false, 
+    },
+  },
 });
 
 const initializeDatabase = async () => {

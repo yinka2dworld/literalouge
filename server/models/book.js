@@ -23,9 +23,8 @@ const Book = sequelize.define('Book', {
      }, 
      
      bookDescription:{
-      type:DataTypes.STRING,
+      type:DataTypes.TEXT,
       allowNull:false,
-      unique:true,
      },
 
      bookAuthor:{

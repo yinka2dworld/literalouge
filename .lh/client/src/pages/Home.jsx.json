@@ -1,0 +1,22 @@
+{
+    "sourceFile": "client/src/pages/Home.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1736503786906,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1736503926302,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,9 +32,11 @@\n \r\n     const handleNextPage = () => {\r\n         if (currentPage < lastPage) {\r\n             setCurrentPage(nextPage);\r\n-        } \r\n+        }\r\n+    };\r\n+\r\n     return (\r\n         <div className=\"home\">\r\n         <Navbar />\r\n         <Search />\r\n"
+                }
+            ],
+            "date": 1736503786906,
+            "name": "Commit-0",
+            "content": "import '../css/Home.css'; \r\nimport Search from '../layout/Search.jsx';\r\nimport Categories from '../layout/Categories.jsx'; \r\nimport Navbar from '../layout/Navbar.jsx';\r\nimport Footer from '../layout/Footer.jsx';\r\nimport { useQuery } from '@apollo/client';\r\nimport { BOOKS } from '../graphql/queries.js';\r\nimport Books from '../layout/Books.jsx';\r\nimport { Link } from 'react-router-dom';\r\nimport { useState } from 'react';\r\n\r\nconst Home = () => {\r\n    const role = localStorage.getItem('role');\r\n\r\n    const [currentPage, setCurrentPage] = useState(1);\r\n    const perPage = 9;\r\n\r\n    const { loading, error, data } = useQuery(BOOKS, {\r\n        variables: { page: currentPage, perPage },\r\n    });\r\n\r\n    if (loading) return <p>Loading...</p>;\r\n    if (error) return <p>Error: {error.message}</p>;\r\n\r\n    const { allBooks, previousPage, nextPage, lastPage } = data.books;\r\n\r\n    const handlePreviousPage = () => {\r\n        if (currentPage > 1) {\r\n            setCurrentPage(previousPage);\r\n        }\r\n    };\r\n\r\n    const handleNextPage = () => {\r\n        if (currentPage < lastPage) {\r\n            setCurrentPage(nextPage);\r\n        } \r\n    return (\r\n        <div className=\"home\">\r\n        <Navbar />\r\n        <Search />\r\n        <div className=\"content\">\r\n            <aside className=\"categories-sidebar\">\r\n                <Categories />\r\n            </aside>\r\n    \r\n            <main className=\"catalog-section\">\r\n                <div className=\"catalog-grid\">\r\n                    {allBooks.map(({ id, bookCover, bookName, bookAuthor }) => (\r\n                        <Link className=\"catalog-link\" to={`/home/${id}`} key={id}>\r\n                            <Books\r\n                                bookCover={bookCover}\r\n                                bookName={bookName}\r\n                                bookAuthor={bookAuthor}\r\n                            />\r\n                        </Link>\r\n                    ))}\r\n                </div>\r\n    \r\n                <div className=\"pagination\">\r\n                    <button\r\n                        className=\"pag\"\r\n                        onClick={handlePreviousPage}\r\n                        disabled={currentPage === 1}\r\n                        aria-label=\"Previous page\"\r\n                    >\r\n                        ◄\r\n                    </button>\r\n                    <span className=\"page-number\">\r\n                        Page {currentPage} of {lastPage}\r\n                    </span>\r\n                    <button\r\n                        className=\"pag\"\r\n                        onClick={handleNextPage}\r\n                        disabled={currentPage === lastPage}\r\n                        aria-label=\"Next page\"\r\n                    >\r\n                        ►\r\n                    </button>\r\n                </div>\r\n            </main>\r\n        </div>\r\n    \r\n        {role === 'admin' || role === 'superAdmin' ? (\r\n            <button className=\"addBook\">\r\n                <Link to={'/admin/addBook'} style={{ textDecoration: 'none', color: '#ffffff' }}>\r\n                    +\r\n                </Link>\r\n            </button>\r\n        ) : null}\r\n    \r\n        <Footer />\r\n    </div>\r\n    \r\n    );\r\n};\r\n\r\nexport default Home;\r\n"
+        }
+    ]
+}

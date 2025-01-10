@@ -15,7 +15,7 @@ const Footer = () => {
 <>
 
 
-<footer>  
+<footer style={{backgroundColor:'white'}}>  
     <hr/>
             
   <img src={okinLogo} alt="okinLogo" className='okinLogo' />

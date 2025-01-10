@@ -109,6 +109,7 @@
 /* Responsive Design */
 @media (max-width: 768px) {
     .content {
+        display: flex;
         flex-direction: column;
         gap: 10px;
     }
@@ -116,17 +117,19 @@
     .catalog-grid {
         grid-template-columns: 1fr;
         gap: 3em;
-        margin:0 auto 0;
+        margin: 0 auto;
         margin-bottom: 4em;
     }
 
     .categories-sidebar {
         width: 100%;
-        margin:0 auto 0;
+        margin: 0 auto;
         max-width: 20rem;
+        order: 2; /* Move below the catalog-section */
     }
 
     .catalog-section {
-        margin-top: 4em;
+        margin-top: 2em;
+        order: 1; /* Keep above the categories-sidebar */
     }
 }

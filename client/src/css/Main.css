@@ -148,10 +148,11 @@ text-decoration:underline;
   .Library1{
     overflow-x: auto; 
     white-space: pre-wrap;
- height:760px;
-  width:450px;
+ height: 30em;
+  width:20em;
   margin-left: -8px;
  }
+ 
  .motto{
 font-size: 2.9em;
  }

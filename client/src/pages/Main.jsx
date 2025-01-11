@@ -16,7 +16,7 @@ const Main = () => {
 <div className='Rectangle12'>
 </div>
 <div className='Group47'>
-<a className='ExploreBooks' href='/home'>Explore books</a>
+<a className='ExploreBooks'   onClick={() => window.scrollTo(0, 0)} href='/home'>Explore books</a>
 </div>
 </div>
 

@@ -1,0 +1,18 @@
+{
+    "sourceFile": "client/src/layout/Categories.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1736566608387,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1736566608387,
+            "name": "Commit-0",
+            "content": "\r\nimport '../css/Categories.css';\r\n\r\nconst Categories = () => {\r\n    const categories = [\r\n        'Fiction',\r\n        'Non-fiction',\r\n        'Science Fiction',\r\n        'Fantasy',\r\n        'Mystery',\r\n        'Romance',\r\n        'Biography',\r\n        'Self-Help',\r\n    ];\r\n\r\n    return (\r\n        <div className=\"categories-container\">\r\n            <h2 className=\"categories-title\">Book Categories</h2>\r\n            <div className=\"categories-grid\">\r\n                {categories.map((category, index) => (\r\n                    <a href={`/home/${category}`} key={index} className=\"category-card\">\r\n                        <span>{category}</span>\r\n                    </a>\r\n                ))}\r\n            </div>\r\n        </div>\r\n    );\r\n};\r\n\r\nexport default Categories;\r\n"
+        }
+    ]
+}

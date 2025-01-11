@@ -40,6 +40,7 @@ const Home = () => {
         <div className="home">
         <Navbar />
         <Search />
+        
         <div className="content">
             <aside className="categories-sidebar">
                 <Categories />
@@ -82,7 +83,7 @@ const Home = () => {
             </main>
         </div>
     
-        {role === 'admin' || role === 'superAdmin' ? (
+        {role ? (
             <button className="addBook">
                 <Link to={'/admin/addBook'} style={{ textDecoration: 'none', color: '#ffffff' }}>
                     +

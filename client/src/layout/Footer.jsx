@@ -1,8 +1,8 @@
 import '../css/layout.css';
 import okinLogo from "/assets/Okinlm.svg"
-import TelegramIcon from '@mui/icons-material/Telegram';
+import  InstagramIcon from '@mui/icons-material/Instagram';
 import XIcon from '@mui/icons-material/X';
-import YouTubeIcon from '@mui/icons-material/YouTube';
+import LinkedinIcon from '@mui/icons-material/Linkedin';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import {Link} from "react-router-dom";
 
@@ -21,22 +21,21 @@ const Footer = () => {
   <img src={okinLogo} alt="okinLogo" className='okinLogo' />
 
     <div className="grid" style={{display:'flex', justifyContent:'center'}}>
-   <Link className="footer-link"  style={{color:"#070C70"}} to="" >About</Link>
-   <Link className="footer-link" style={{color:"#070C70"}} to="" >Privacy Policy</Link> 
-   <Link className="footer-link" style={{color:"#070C70"}} to="" >Cookie Policy</Link>
-   <Link className="footer-link" style={{color:"#070C70"}} to="/login" >Login</Link> 
+   <Link   onClick={() => window.scrollTo(0, 0)} className="footer-link"  style={{color:"#070C70"}}   to="/about" >About</Link>
+   <Link   onClick={() => window.scrollTo(0, 0)} className="footer-link" style={{color:"#070C70"}} to="/privacy-policy" >Privacy Policy</Link> 
+   <Link   onClick={() => window.scrollTo(0, 0)} className="footer-link" style={{color:"#070C70"}} to="/login" >Login</Link> 
         </div>
         
     <div className="crm">
         <div style={{textAlign:'center', marginBottom:'20px'}}>
-        <Link to='' className="media-link" style={{color:'#070C70', marginRight:'10px'}} ><TelegramIcon fontSize="large"/></Link> 
-        <Link to='' className="media-link" style={{color:'red', marginRight:'10px'}}><YouTubeIcon fontSize="large"/></Link> 
-        <Link to='' className="media-link" style={{color:'#6767ff', marginRight:'10px'}}><FacebookIcon fontSize="large"/></Link>
-        <Link to='' className="media-link" style={{color:'#070C70'}} ><XIcon  fontSize="large"/></Link> 
+        <Link to='https://www.instagram.com/okintechnologies/' className="media-link" target="_blank" rel="noopener noreferrer" style={{color:'#833AB4', marginRight:'10px'}} ><InstagramIcon fontSize="large"/></Link> 
+        <Link to='"https://linkedin.com' className="media-link" target="_blank" rel="noopener noreferrer" style={{color:'#070C70', marginRight:'10px'}}><LinkedinIcon fontSize="large"/></Link> 
+        <Link to='https://web.facebook.com/okintechnologies/' className="media-link" target="_blank" rel="noopener noreferrer" style={{color:'#6767ff', marginRight:'10px'}}><FacebookIcon fontSize="large"/></Link>
+        <Link to='https://x.com/okintechnologie/' target="_blank" rel="noopener noreferrer" className="media-link" style={{color:'#070C70'}} ><XIcon  fontSize="large"/></Link> 
         </div>
     </div>
     
-      <Link href="https://okin.onrender.com/" style={{color:"#070C70"}} className="footer-link" >&copy; {year} CodeX - All Rights Reserved | Ọkín technologies</Link> 
+      <Link href="https://okin.onrender.com/" target="_blank" rel="noopener noreferrer" style={{color:"#070C70"}} className="footer-link" >&copy; {year} CodeX - All Rights Reserved | Ọkín technologies</Link> 
       </footer> 
 </>
     )

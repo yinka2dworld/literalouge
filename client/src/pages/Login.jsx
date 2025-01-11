@@ -59,7 +59,7 @@ value={password}     onChange={(e) => setPassword(e.target.value)}
 
          <div className='acc' >
 <p style={{'color':'#070C70'}}>Dont have an account?</p>  
-<a href="/signup" className='form-link'>Signup</a>
+<a   onClick={() => window.scrollTo(0, 0)} href="/signup" className='form-link'>Signup</a>
 </div>
     </div>
 

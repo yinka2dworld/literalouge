@@ -25,12 +25,12 @@
 .book-title {
     font-size: 2rem;
     font-weight: bold;
-    color: #070C70;
+    color: #ff1493;
 }
 
 .book-author {
     font-size: 1.2rem;
-    color: #ff1493;
+    color: #070C70;
     margin-top: 5px;
 }
 
@@ -41,17 +41,17 @@
 }
 
 .book-description h3 {
-    color: #070C70;
+    color:#ff1493 ;
     margin-bottom: 10px;
 }
 .desc{
-    color: #ff1493;
+    color: #070C70;
 }
 
 .book-meta p {
     margin: 5px 0;
     font-size: 1rem;
-    color: #666;
+    color: #ff1493;
 }
 
 .book-link {

@@ -1,12 +1,13 @@
 import '../css/Book.css';
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import Navbar from '../layout/Navbar.jsx';
 import Footer from '../layout/Footer.jsx';
 import { useQuery, useMutation } from '@apollo/client';
 import { BOOK } from '../graphql/queries.js';
 import { DELETEBOOK } from '../graphql/mutations.js';
 import { FaTrash, FaEdit } from 'react-icons/fa';
-import { saveAs } from 'file-saver'; // Import file-saver
+import { saveAs } from 'file-saver';
+import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
 
 const Book = () => {
   const { bookId } = useParams(); // Get bookId from the route
@@ -76,6 +77,7 @@ const Book = () => {
   return (
     <div>
       <Navbar />
+
       <div className="book-detail">
         <img
           src={book.bookCover} 
@@ -87,6 +89,16 @@ const Book = () => {
           <h1 className="book-title">{book.bookName}</h1>
           <p className="book-author">by {book.bookAuthor}</p>
         </div>
+
+        <div style={{backgroundColor:'white', marginBottom:'20px'}}>
+                 <h3 style={{paddingTop:'20px',textAlign:'center', color:'#ff1493'}}>We need your support!</h3>
+            <Link  className='donate-msg'  to='/donate' style={{ color:'#070C70'}}> 
+        <p style={{ fontSize:'20px', textAlign:'center', paddingBottom:'40px'}}>
+        Kindly click here to support us with a donation, helping us continue 
+        providing free access to an exceptional collection of African Literature.
+            <br/> Gracious <VolunteerActivismIcon fontSize="medium" style={{ fill:' #ff1493',  }} /> </p>
+        </Link>  
+           </div>
 
         <div className="book-description">
           <h3>Description</h3>

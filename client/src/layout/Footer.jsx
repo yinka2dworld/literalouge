@@ -1,8 +1,8 @@
 import '../css/layout.css';
-import okinLogo from "/assets/Okinlm.svg"
+import okinLogo from "/assets/Okinlm.svg";
 import  InstagramIcon from '@mui/icons-material/Instagram';
 import XIcon from '@mui/icons-material/X';
-import LinkedinIcon from '@mui/icons-material/Linkedin';
+
 import FacebookIcon from '@mui/icons-material/Facebook';
 import {Link} from "react-router-dom";
 
@@ -29,7 +29,6 @@ const Footer = () => {
     <div className="crm">
         <div style={{textAlign:'center', marginBottom:'20px'}}>
         <Link to='https://www.instagram.com/okintechnologies/' className="media-link" target="_blank" rel="noopener noreferrer" style={{color:'#833AB4', marginRight:'10px'}} ><InstagramIcon fontSize="large"/></Link> 
-        <Link to='"https://linkedin.com' className="media-link" target="_blank" rel="noopener noreferrer" style={{color:'#070C70', marginRight:'10px'}}><LinkedinIcon fontSize="large"/></Link> 
         <Link to='https://web.facebook.com/okintechnologies/' className="media-link" target="_blank" rel="noopener noreferrer" style={{color:'#6767ff', marginRight:'10px'}}><FacebookIcon fontSize="large"/></Link>
         <Link to='https://x.com/okintechnologie/' target="_blank" rel="noopener noreferrer" className="media-link" style={{color:'#070C70'}} ><XIcon  fontSize="large"/></Link> 
         </div>

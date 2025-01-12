@@ -82,6 +82,11 @@
     font-weight: bold;
 }
 
+
+
+
+
+
 /* Add Book Button */
 .addBook {
     position: fixed;
@@ -105,6 +110,7 @@
 .addBook:hover {
     transform: scale(1.1);
 }
+
 
 /* Responsive Design */
 @media (max-width: 768px) {

@@ -100,6 +100,20 @@
 .edit-icon {
     color: #4d94ff;
 }
+.donation-header{
+    color: #ff1493;
+    text-align: center;
+}
+.donation-section{
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 20px;
+    background: white;
+}
+.donate-msg{
+     color: #070C70;
+}
 
 /* Responsive Styling */
 @media (max-width: 768px) {

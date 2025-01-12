@@ -1,0 +1,30 @@
+{
+    "sourceFile": "client/src/layout/Books.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1736573257294,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1736573298216,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,18 @@\n+import '../css/layout.css';\r\n+\r\n+\r\n+const Books = ) => {\r\n+    return (\r\n+        <div className=\"book-card\">\r\n+            <img src={props.bookCover} alt=\"Book Cover\" className=\"book-img\" />\r\n+            <div className=\"book-info\">\r\n+                <h2 style={{color:\"#070C70\", fontSize:\"20px\"}} className=\"book-title\">{props.bookName}</h2>\r\n+                <p className=\"bookAuthor\" >{props.bookAuthor}</p>\r\n+            </div>\r\n+        </div>\r\n+    );\r\n+}\r\n+\r\n+export default Books;\r\n+\r\n+\r\n"
+                },
+                {
+                    "date": 1736573306805,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n import '../css/layout.css';\r\n \r\n \r\n-const Books = {b}) => {\r\n+const Books = {}) => {\r\n     return (\r\n         <div className=\"book-card\">\r\n             <img src={props.bookCover} alt=\"Book Cover\" className=\"book-img\" />\r\n             <div className=\"book-info\">\r\n"
+                },
+                {
+                    "date": 1736573317051,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n import '../css/layout.css';\r\n \r\n \r\n-const Books = {}) => {\r\n+const Books = {b}) => {\r\n     return (\r\n         <div className=\"book-card\">\r\n             <img src={props.bookCover} alt=\"Book Cover\" className=\"book-img\" />\r\n             <div className=\"book-info\">\r\n"
+                }
+            ],
+            "date": 1736573257294,
+            "name": "Commit-0",
+            "content": "\r\nimport '../css/layout.css';\r\n\r\n\r\nconst Books = (props) => {\r\n    return (\r\n        <div className=\"book-card\">\r\n            <img src={props.bookCover} alt=\"Book Cover\" className=\"book-img\" />\r\n            <div className=\"book-info\">\r\n                <h2 style={{color:\"#070C70\", fontSize:\"20px\"}} className=\"book-title\">{props.bookName}</h2>\r\n                <p className=\"bookAuthor\" >{props.bookAuthor}</p>\r\n            </div>\r\n        </div>\r\n    );\r\n}\r\n\r\nexport default Books;\r\n\r\n\r\n"
+        }
+    ]
+}

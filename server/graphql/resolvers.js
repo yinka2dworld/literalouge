@@ -47,23 +47,23 @@ export const resolvers = {
       }
     },
 
-    users: async () => {
+    users: (applyTokenChecker, async () => {
       try {
         const data = await User.findAll();
         return data;
       } catch (error) {
         throw new Error(error.message);
       }
-    },
+    }),
 
-    user: async (_, args) => {
+    user:(applyTokenChecker, async (_, args) => {
       try {
         const data = await User.findOne({ where: { id: args.id } });
         return data;
       } catch (error) {
         throw new Error(error.message);
       }
-    },
+    }),
 
     searchBooks: async (_, { searchTerm }) => {
       try {
@@ -86,7 +86,7 @@ export const resolvers = {
 
   Mutation: {
 
-    addBook: async (_, { addbook }) => {
+    addBook: (applyTokenChecker, async (_, { addbook }) => {
       try {
         const {
           bookCover,
@@ -118,11 +118,11 @@ export const resolvers = {
         console.error("Error adding book:", error.message);
         throw new Error("Failed to add book. Please try again.");
       }
-    },
+    }),
      
 
     // Update a book
-    updateBook: async (_, args) => {
+    updateBook: (applyTokenChecker, async (_, args) => {
       try {
         const { bookCover, bookName, bookDescription, bookAuthor, bookCategory, bookLanguage, bookFile } = args.updatebook;
         const existingBook = await Book.findOne({ where: { id: args.id } });
@@ -152,10 +152,10 @@ export const resolvers = {
         console.error('Error during deleteBook operation:', error.message);
         return {success: false, message: `Error deleting book: ${error.message}`};
       }
-    },
+    }),
   
     
-    deleteBook: async (_, { id }) => {
+    deleteBook: (applyTokenChecker, async (_, { id }) => {
       try {
         const book = await Book.findByPk(id);
         if (!book) {
@@ -202,7 +202,7 @@ export const resolvers = {
           message: `Error deleting book: ${error.message}`,
         };
       }
-    },
+    }),
     
     
 
@@ -245,7 +245,7 @@ export const resolvers = {
     },
 
   
-    updateUser: async (_, args) => {
+    updateUser: ( applyTokenChecker, async (_, args) => {
       try {
         const existingUser =  User.findOne({where: {}})
         const { profilePic, fullName, username, phoneNumber, email } = args.updateuser;
@@ -267,10 +267,10 @@ export const resolvers = {
       } catch (error) {
         return { success: false, message: `Error updating user: ${error.message}` };
       }
-    },
+    }),
 
 
-    deleteUser: async (_, { id }) => {
+    deleteUser:(applyTokenChecker, async (_, { id }) => {
       try {
         const user = await User.findByPk(id);
         if (!user) throw new Error("User not found");
@@ -280,7 +280,7 @@ export const resolvers = {
       } catch (error) {
         return { success: false, message: `Error deleting user: ${error.message}` };
       }
-    },
+    }),
 
 
   }

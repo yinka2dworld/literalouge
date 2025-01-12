@@ -8,28 +8,28 @@ import { DELETEBOOK } from '../graphql/mutations.js';
 import { FaTrash, FaEdit } from 'react-icons/fa';
 import { saveAs } from 'file-saver';
 import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 const Book = () => {
-  const { bookId } = useParams(); // Get bookId from the route
+  const { bookId } = useParams();
   const navigate = useNavigate();
-  const role = localStorage.getItem('role'); // Fetch user role
+  const role = localStorage.getItem('role');
   const token = localStorage.getItem('token');
 
-  // Fetch book data
   const { loading, error, data } = useQuery(BOOK, {
-    variables: { 
-      bookId,
-    },
+    variables: { bookId },
     context: {
       headers: {
-        Authorization: 'Bearer ' + token,
+        Authorization: `Bearer ${token}`,
       },
     },
   });
-   const book = data?.book;
+
+  const book = data?.book;
 
   const [deleteBook] = useMutation(DELETEBOOK);
-  
+
   const handleDelete = async () => {
     if (!bookId) {
       alert('Invalid book ID.');
@@ -41,10 +41,11 @@ const Book = () => {
         variables: { deleteBookId: bookId },
         context: {
           headers: {
-            Authorization: 'Bearer '+token
+            Authorization: `Bearer ${token}`,
           },
         },
       });
+
       if (data?.deleteBook?.success) {
         alert('Book deleted successfully!');
         navigate('/home');
@@ -57,82 +58,108 @@ const Book = () => {
     }
   };
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
-
   const handleUpdate = () => {
     navigate(`/admin/updateBook/${bookId}`);
   };
 
   const handleDownload = () => {
-    const pdfUrl = book.bookFile;
-    const pdfName = `literalouge.com ${book.bookName+' - '+book.bookAuthor|| 'book'}.pdf`;
+    const pdfUrl = book?.bookFile;
+    const pdfName = `literalouge.com ${book?.bookName || 'book'}.pdf`;
+
     if (!pdfUrl) {
       alert('File not available for download.');
       return;
     }
-    saveAs(pdfUrl, pdfName); 
+
+    saveAs(pdfUrl, pdfName);
   };
+ 
+
+  if (error) return <p>Error: {error.message}</p>;
 
   return (
     <div>
       <Navbar />
 
       <div className="book-detail">
-        <img
-          src={book.bookCover} 
-          alt={book.bookName}
-          className="book-photo"
-        />
-
-        <div className="book-info">
-          <h1 className="book-title">{book.bookName}</h1>
-          <p className="book-author">by {book.bookAuthor}</p>
+        {loading?
+          <div className="loading-skeleton">
+          <Skeleton height={400} width="100%" />
+          <Skeleton count={3} height={20} width="80%" style={{ margin: '10px auto' }} />
         </div>
+        :(
+          <>
+            {/* Book Cover */}
+            <img
+              src={book.bookCover}
+              alt={book.bookName}
+              className="book-photo"
+            />
 
-        <div style={{backgroundColor:'white', marginBottom:'20px'}}>
-                 <h3 style={{paddingTop:'20px',textAlign:'center', color:'#ff1493'}}>We need your support!</h3>
-            <Link  className='donate-msg'  to='/donate' style={{ color:'#070C70'}}> 
-        <p style={{ fontSize:'20px', textAlign:'center', paddingBottom:'40px'}}>
-        Kindly click here to support us with a donation, helping us continue 
-        providing free access to an exceptional collection of African Literature.
-            <br/> Gracious <VolunteerActivismIcon fontSize="medium" style={{ fill:' #ff1493',  }} /> </p>
-        </Link>  
-           </div>
-
-        <div className="book-description">
-          <h3>Description</h3>
-          <p className='desc'>{book.bookDescription}</p>
-        </div>
-
-        <div className="book-meta">
-          <p><strong>Category:</strong> {book.bookCategory}</p>
-          <p><strong>Language:</strong> {book.bookLanguage}</p>
-        </div>
-
-        <div className="buttons-div">
-          {/* Download button */}
-          <button onClick={handleDownload} disabled={loading}  className="book-link">
-            Download 
-          </button>
-
-          {/* Admin icons for delete and edit */}
-          {(role === 'admin' || role === 'superAdmin') && (
-            <div className="admin-icons">
-              <FaTrash
-                className="icon delete-icon"
-                title="Delete Book"
-                onClick={handleDelete}
-              />
-              <FaEdit
-                className="icon edit-icon"
-                title="Update Book"
-                onClick={handleUpdate}
-              />
+            {/* Book Info */}
+            <div className="book-info">
+              <h1 className="book-title">{book.bookName}</h1>
+              <p className="book-author">by {book.bookAuthor}</p>
             </div>
-          )}
-        </div>
+
+            {/* Donation Section */}
+            <div className="donation-section">
+              <h3 className="donation-header">We need your support!</h3>
+              <Link className="donate-msg" to="/donate">
+                <p>
+                  Kindly click here to support us with a donation, helping us
+                  continue providing free access to an exceptional collection of
+                  African Literature. <VolunteerActivismIcon fontSize='medium' className="icon" style={{fill:'#ff1493'}} />
+                </p>
+              </Link>
+            </div>
+
+            {/* Book Description */}
+            <div className="book-description">
+              <h3>Description</h3>
+              <p>{book.bookDescription}</p>
+            </div>
+
+            {/* Book Meta Info */}
+            <div className="book-meta">
+              <p>
+                <strong>Category:</strong> {book.bookCategory}
+              </p>
+              <p>
+                <strong>Language:</strong> {book.bookLanguage}
+              </p>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="buttons-div">
+              <button
+                onClick={handleDownload}
+                disabled={loading}
+                className="book-link"
+              >
+                Download
+              </button>
+
+              {(role === 'superAdmin') && (
+                <div className="admin-icons">
+                  <FaTrash
+                    className="icon delete-icon"
+                    title="Delete Book"
+                    onClick={handleDelete}
+                  />
+                  <FaEdit
+                    className="icon edit-icon"
+                    title="Update Book"
+                    onClick={handleUpdate}
+                  />
+                </div>
+              )}
+            </div>
+          </>
+        )}
       </div>
+
+      {/* Footer */}
       <Footer />
     </div>
   );

@@ -30,7 +30,7 @@ const AddBook = () => {
 
   const handleFileUpload = async (file) => {
     if (!file) return null;
-    
+    // Simulate file upload logic if needed
     return file;
   };
 
@@ -38,6 +38,7 @@ const AddBook = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
+
       const bookCover = await handleFileUpload(formData.bookCover);
       const bookFile = await handleFileUpload(formData.bookFile);
 
@@ -50,18 +51,17 @@ const AddBook = () => {
             bookCategory: formData.bookCategory,
             bookLanguage: formData.bookLanguage,
             bookCover,
-            bookFile, 
+            bookFile,
           },
-        
+        },
         context: {
           headers: {
-             Authorization: 'Bearer ' + token, 
-         },
-      },
-     },
+            Authorization: `Bearer ${token}`,
+          },
+        },
       });
 
-      console.log('Book added successfully!');
+      console.log('Book added successfully!', data);
       navigate('/home');
     } catch (err) {
       console.error('Error adding book:', err.message);
@@ -193,7 +193,7 @@ const AddBook = () => {
           </div>
           <div className="form-group">
             <button type="submit" className="btn-submit" disabled={addingBook}>
-              {addingBook ? 'Loading...' : 'Add Book'}
+              {addingBook ? 'Adding...' : 'Add Book'}
             </button>
           </div>
         </form>
@@ -204,3 +204,4 @@ const AddBook = () => {
 };
 
 export default AddBook;
+

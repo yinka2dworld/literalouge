@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";  // Import useNavigate for redirection
 import '../css/Donate.css'; 
 import Navbar from "../layout/Navbar.jsx";
 import Footer from "../layout/Footer.jsx";
@@ -7,55 +8,19 @@ export const Donate = () => {
   const [donationAmount, setDonationAmount] = useState("");
   const [donorDetails, setDonorDetails] = useState({ name: "", email: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const navigate = useNavigate(); // Hook for navigation
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setDonorDetails({ ...donorDetails, [name]: value });
   };
 
-  const handlePayment = () => {
-    const PAYPAL_CLIENT_ID = import.meta.env.VITE_PAYPAL_CLIENT_ID;
-
-    if (!PAYPAL_CLIENT_ID) {
-      alert("PayPal Client ID is missing.");
-      return;
-    }
-
-    const paypalScript = document.createElement("script");
-    paypalScript.src = `https://www.paypal.com/sdk/js?client-id=${PAYPAL_CLIENT_ID}&currency=USD`;
-    paypalScript.async = true;
-
-    paypalScript.onload = () => {
-      window.paypal
-        .Buttons({
-          createOrder: (data, actions) => {
-            return actions.order.create({
-              purchase_units: [
-                {
-                  amount: {
-                    value: donationAmount,
-                  },
-                },
-              ],
-            });
-          },
-          onApprove: (data, actions) => {
-            return actions.order.capture().then(() => {
-              alert("Thank you for your donation!");
-              setIsSubmitting(false); // Reset form state
-            });
-          },
-        })
-        .render("#paypal-button");
-    };
-
-    document.body.appendChild(paypalScript);
-    setIsSubmitting(true); // Set submitting state to true
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    handlePayment();
+    setIsSubmitting(true);
+
+    // Navigate to the PayPal processing page
+    navigate("/paypal-donation", { state: { donorDetails, donationAmount } });
   };
 
   return (
@@ -123,8 +88,6 @@ export const Donate = () => {
             {isSubmitting ? "Processing..." : "Donate"}
           </button>
         </form>
-
-        <div id="paypal-button" className="paypal-button"></div>
       </div>
       <Footer />
     </div>

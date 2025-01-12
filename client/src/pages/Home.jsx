@@ -56,7 +56,7 @@ const Home = () => {
                                   </div>
                               ))
                             : data.books.allBooks.map(({ id, bookCover, bookName, bookAuthor }) => (
-                                  <Link className="catalog-link" to={`/home/${id}`} key={id}>
+                                  <Link className="catalog-link" onClick={(() =>window.scrollTo(0,0))} to={`/home/${id}`} key={id}>
                                       <Books
                                           bookCover={bookCover}
                                           bookName={bookName}

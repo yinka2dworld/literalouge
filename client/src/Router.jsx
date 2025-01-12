@@ -11,7 +11,7 @@ import NotFound from './pages/NotFound';
 import Donate from './pages/Donate ';
 import Privacy from './pages/Privacy';
 import  About from './pages/About';
-
+import Paypal from './pages/Paypal';
 
 const AppRouter = () => {
     return (
@@ -28,6 +28,7 @@ const AppRouter = () => {
      <Route exact path ='/donate' element={<Donate/>} />
      <Route path ='/privacy-policy' element={<Privacy/>} />
      <Route path ='/about' element={<About/>} />
+     <Route path ='/paypal-donation' element={<Paypal/>} />
      <Route path ='*' element={<NotFound />} />
             </Routes>
         </Router>

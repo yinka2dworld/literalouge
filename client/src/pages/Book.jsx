@@ -105,7 +105,7 @@ const Book = () => {
             {/* Donation Section */}
             <div className="donation-section">
               <h3 className="donation-header">We need your support!</h3>
-              <Link className="donate-msg" to="/donate">
+              <Link onClick={(() => window.scrollTo(0,0))} className="donate-msg" to="/donate">
                 <p>
                   Kindly click here to support us with a donation, helping us
                   continue providing free access to an exceptional collection of

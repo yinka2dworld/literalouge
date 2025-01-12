@@ -113,8 +113,11 @@
 }
 .donate-msg{
      color: #070C70;
+     text-decoration: none;
 }
-
+.donate-msg:hover{
+    text-decoration: underline;
+}
 /* Responsive Styling */
 @media (max-width: 768px) {
     .book-detail {

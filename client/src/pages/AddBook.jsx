@@ -104,99 +104,110 @@ const AddBook = () => {
             {addBookError.message || 'An unexpected error occurred.'}
           </p>
         )}
+        
         <form className="create" onSubmit={bookAdder}>
-          <div className="form-group">
-            <label htmlFor="bookCover" className="label">Book Cover</label>
-            <input
-              type="file"
-              name="bookCover"
-              accept=".png, .jpg, .jpeg"
-              className="input-text"
-              onChange={handleInputChange}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="bookName" className="label">Book Name</label>
-            <input
-              type="text"
-              name="bookName"
-              value={formData.bookName}
-              className="input-text"
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="bookAuthor" className="label">Author</label>
-            <input
-              type="text"
-              name="bookAuthor"
-              value={formData.bookAuthor}
-              className="input-text"
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="bookDescription" className="label">Description</label>
-            <textarea
-              name="bookDescription"
-              value={formData.bookDescription}
-              className="input-textarea"
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="bookCategory" className="label">Category</label>
-            <select
-              name="bookCategory"
-              value={formData.bookCategory}
-              className="input-select"
-              onChange={handleInputChange}
-              required
-            >
-              <option value="" disabled>Select a category</option>
-              {categories.map((category) => (
-                <option key={category} value={category}>
-                  {category}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="form-group">
-            <label htmlFor="bookLanguage" className="label">Language</label>
-            <select
-              name="bookLanguage"
-              value={formData.bookLanguage}
-              className="input-select"
-              onChange={handleInputChange}
-              required
-            >
-              <option value="" disabled>Select a language</option>
-              {africanLanguages.map((language) => (
-                <option key={language} value={language}>
-                  {language}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="form-group">
-            <label htmlFor="bookFile" className="label">Book File</label>
-            <input
-              type="file"
-              name="bookFile"
-              accept=".pdf, .epub"
-              className="input-text"
-              onChange={handleInputChange}
-            />
-          </div>
-          <div className="form-group">
-            <button type="submit" className="btn-submit" disabled={addingBook}>
-              {addingBook ? 'Adding...' : 'Add Book'}
-            </button>
-          </div>
-        </form>
+  <div className="form-group">
+    <label htmlFor="bookCover" className="label">Book Cover</label>
+    <input
+      type="file"
+      name="bookCover"
+      accept=".png, .jpg, .jpeg"
+      className="input-text"
+      onChange={handleInputChange}
+    />
+  </div>
+
+  <div className="form-row">
+    <div className="form-group half-width">
+      <label htmlFor="bookName" className="label">Book Name</label>
+      <input
+        type="text"
+        name="bookName"
+        value={formData.bookName}
+        className="input-text"
+        onChange={handleInputChange}
+        required
+      />
+    </div>
+    <div className="form-group half-width">
+      <label htmlFor="bookAuthor" className="label">Author</label>
+      <input
+        type="text"
+        name="bookAuthor"
+        value={formData.bookAuthor}
+        className="input-text"
+        onChange={handleInputChange}
+        required
+      />
+    </div>
+  </div>
+
+  <div className="form-row">
+    <div className="form-group half-width">
+      <label htmlFor="bookCategory" className="label">Category</label>
+      <select
+        name="bookCategory"
+        value={formData.bookCategory}
+        className="input-select"
+        onChange={handleInputChange}
+        required
+      >
+        <option value="" disabled>Select a category</option>
+        {categories.map((category) => (
+          <option key={category} value={category}>
+            {category}
+          </option>
+        ))}
+      </select>
+    </div>
+    <div className="form-group half-width">
+      <label htmlFor="bookLanguage" className="label">Language</label>
+      <select
+        name="bookLanguage"
+        value={formData.bookLanguage}
+        className="input-select"
+        onChange={handleInputChange}
+        required
+      >
+        <option value="" disabled>Select a language</option>
+        {africanLanguages.map((language) => (
+          <option key={language} value={language}>
+            {language}
+          </option>
+        ))}
+      </select>
+    </div>
+  </div>
+
+  <div className="form-group">
+    <label htmlFor="bookDescription" className="label">Description</label>
+    <textarea
+      name="bookDescription"
+      value={formData.bookDescription}
+      className="input-textarea"
+      onChange={handleInputChange}
+      required
+    />
+  </div>
+
+  <div className="form-group">
+    <label htmlFor="bookFile" className="label">Book File</label>
+    <input
+      type="file"
+      name="bookFile"
+      accept=".pdf, .epub"
+      className="input-text"
+      onChange={handleInputChange}
+    />
+  </div>
+
+  <div className="form-group">
+    <button type="submit" className="btn-submit" disabled={addingBook}>
+      {addingBook ? 'Adding...' : 'Add Book'}
+    </button>
+  </div>
+</form>
+
       </div>
       <Footer />
     </div>

@@ -1,38 +1,48 @@
-/* General container styles */
-.container {
-  padding: 10px;
+.create{
+  width: 80%;
+  margin: 0 auto 0;
 }
 
 /* Form container */
 .form-container {
   background-color: #f1d9e5;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 90%; /* Ensure it fits within the screen on smaller devices */
-  margin: 0 auto;
-  margin-bottom: 50px; /* Adjusted for smaller screens */
+  border-radius: 12px;
+  padding-top: 24px;
+  width: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  margin: 3em auto 3em;
 }
 
 /* Heading styles */
 h2 {
   text-align: center;
-  font-size: 1.5rem; /* Adjust font size for mobile */
+  font-size: 1.75rem;
+  margin-bottom: 24px;
+  color: #070c70; /* Primary text color */
+}
+
+/* Form group for single-row inputs */
+.form-group {
   margin-bottom: 20px;
 }
 
-/* Form group spacing */
-.form-group {
-  margin-bottom: 15px;
+/* Form group for side-by-side inputs */
+.form-group-inline {
+  display: flex;
+  gap: 16px; /* Space between inputs */
+}
+
+.form-group-inline .input-text {
+  flex: 1; /* Inputs take equal width */
 }
 
 /* Label styling */
 .label {
   display: block;
-  font-size: 14px;
-  font-weight: bold;
-  margin-bottom: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #070c70;
 }
 
 /* Input fields */
@@ -40,56 +50,101 @@ h2 {
 .input-textarea,
 .input-select {
   width: 100%;
-  padding: 12px;
-  font-size: 14px;
-  border-radius: 8px;
+  padding: 14px;
+  font-size: 15px;
+  border-radius: 10px;
   border: 1px solid #ccc;
-  box-sizing: border-box;
+  background-color: #fff;
+  color: #070c70;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-text:focus,
+.input-textarea:focus,
+.input-select:focus {
+  border-color: #ff1493;
+  box-shadow: 0 0 5px rgba(255, 20, 147, 0.5);
+  outline: none;
 }
 
 .input-textarea {
   resize: vertical;
+  min-height: 100px;
 }
 
 /* Submit button */
 .btn-submit {
   width: 100%;
-  padding: 12px;
+  padding: 14px;
   background-color: #070c70;
   color: white;
   font-size: 16px;
   font-weight: bold;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .btn-submit:hover {
   background-color: #ff1493;
+  transform: scale(1.02);
+}
+
+.btn-submit:active {
+  background-color: #e31383;
+  transform: scale(0.98);
 }
 
 /* Error messages */
 .errorMsg {
   color: red;
   text-align: center;
-  margin-bottom: 20px;
   font-size: 14px;
+  margin-bottom: 16px;
 }
 
-/* Responsive styles for mobile */
+/* Responsive styles */
 @media (max-width: 768px) {
   h2 {
-    font-size: 1.25rem; /* Slightly smaller heading */
+    font-size: 1.5rem;
   }
 
   .btn-submit {
-    font-size: 14px; /* Adjust button font size */
-    padding: 10px; /* Reduce padding for smaller buttons */
+    font-size: 14px;
+    padding: 12px;
   }
 
   .form-container {
-    margin-bottom: 30px; /* Less bottom margin for smaller devices */
-    padding: 15px; /* Reduce padding for compactness */
+    padding: 18px;
+  }
+
+  .form-group-inline {
+    flex-direction: column;
+    gap: 12px; /* Smaller gap for stacked inputs */
+  }
+}
+
+
+
+/* Flex row for grouped inputs */
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 3em;
+}
+
+/* Half-width for grouped inputs */
+.half-width {
+  flex: 1;
+  min-width: 0; /* Prevent overflow */
+}
+
+/* Adjust inputs for smaller screens */
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+    gap: 12px;
   }
 }

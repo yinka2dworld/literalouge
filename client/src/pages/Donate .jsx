@@ -6,7 +6,7 @@ import Footer from "../layout/Footer.jsx";
 export const Donate = () => {
   const [donationAmount, setDonationAmount] = useState("");
   const [donorDetails, setDonorDetails] = useState({ name: "", email: "" });
-  const [isSubmitting, setIsSubmitting] = useState(false); // To handle form submission state
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -14,7 +14,7 @@ export const Donate = () => {
   };
 
   const handlePayment = () => {
-    const PAYPAL_CLIENT_ID = process.env.REACT_APP_PAYPAL_CLIENT_ID;
+    const PAYPAL_CLIENT_ID = import.meta.env.VITE_PAYPAL_CLIENT_ID;
 
     if (!PAYPAL_CLIENT_ID) {
       alert("PayPal Client ID is missing.");

@@ -2,7 +2,6 @@ import '../css/layout.css';
 import okinLogo from "/assets/Okinlm.svg";
 import  InstagramIcon from '@mui/icons-material/Instagram';
 import XIcon from '@mui/icons-material/X';
-
 import FacebookIcon from '@mui/icons-material/Facebook';
 import {Link} from "react-router-dom";
 

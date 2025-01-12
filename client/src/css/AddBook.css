@@ -117,9 +117,13 @@ h2 {
   }
 
   .form-container {
-    padding: 18px;
+    width: 80%;
+    padding-right: 25px;
+    padding-bottom: 30px;
   }
-
+  .create{
+    width: 80%; 
+  }
   .form-group-inline {
     flex-direction: column;
     gap: 12px; /* Smaller gap for stacked inputs */

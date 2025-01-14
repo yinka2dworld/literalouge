@@ -124,12 +124,12 @@
         grid-template-columns: 1fr;
         gap: 3em;
         margin: 0 auto;
-        margin-bottom: 4em;
+        margin-bottom: 2em;
     }
 
     .categories-sidebar {
         width: 80%;
-        margin: 0 auto 0;
+        margin: 8em  auto 0;
         max-width: 20rem;
         order: 2; /* Move below the catalog-section */
     }

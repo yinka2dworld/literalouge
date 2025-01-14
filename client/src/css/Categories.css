@@ -1,6 +1,5 @@
 .categories-container {
-    padding: 1rem;
-    margin-left: 20px; 
+    padding: 1rem; 
     border-radius: 10px;
     border: 2px solid #070c70;
     text-align: center;
@@ -81,6 +80,5 @@
 @media (max-width: 768px) {
    .categories-container{
     margin: 0 auto 0;
-    margin-left: 0;
    }
 }

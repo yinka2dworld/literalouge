@@ -138,4 +138,8 @@
         margin-top: 2em;
         order: 1; /* Keep above the categories-sidebar */
     }
+    .addBook{
+        bottom: 40px;
+        right: 40px;
+    }
 }

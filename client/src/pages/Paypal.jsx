@@ -83,7 +83,7 @@ export const PayPalDonation = () => {
     color: '#555',
     marginBottom: '20px',
   }}>
-    Thank you, {donorDetails.name}, for supporting Literalouge!
+    Thank you {donorDetails.name}, for trying to support Literalouge!
   </p>
   <div id="paypal-button" className="paypal-button" style={{
     width: '300px',

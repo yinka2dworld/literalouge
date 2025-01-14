@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 18,
+            "activePatchIndex": 20,
             "patches": [
                 {
                     "date": 1736818139117,
@@ -80,6 +80,14 @@
                 {
                     "date": 1736819006600,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,45 @@\n+@import url('https://fonts.googleapis.com/css2?family=Freehand:wght@400&display=swap');\n+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');\n+html, body {\n+    height: 100%;\n+    margin: 0;\n+  }\n+  \n+  body {\n+    font-size: 20px;\n+    font-family: 'Roboto', sans-serif;\n+    background-color: #f8f8f8;\n+  }\n+\n+  @media (max-width: 768px) { \n+    body{\n+  overflow-x: clip;\n+}\n+  }\n+\n+.errorMsg{\n+    text-align: center;\n+    margin-left: 120px;\n+    background-color:rgb(241, 208, 208);\n+    width: 192px;\n+    padding: 10px;\n+    border-radius:10px;\n+    border-style: solid;\n+    border-width: 2px;\n+    border-color: red;\n+    font-size: 15px;\n+    color: red;\n+}\n+.successMsg{\n+    text-align: center;\n+    margin-left: 120px;\n+    background-color:rgb(219, 236, 229);\n+    width: 192px;\n+    padding: 10px;\n+    border-radius:10px;\n+    border-style: solid;\n+    border-width: 2px;\n+    border-color: green;\n+    font-size: 15px;\n+    color: green;\n+}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1736819422007,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,45 @@\n+@import url('https://fonts.googleapis.com/css2?family=Freehand:wght@400&display=swap');\n+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');\n+html, body {\n+    height: 100%;\n+    margin: 0;\n+  }\n+  \n+  body {\n+    font-size: 20px;\n+    font-family: 'Roboto', sans-serif;\n+    background-color: #f8f8f8;\n+  }\n+\n+  @media (max-width: 768px) { \n+    body{\n+  overflow-x: ;\n+   }\n+  }\n+\n+.errorMsg{\n+    text-align: center;\n+    margin-left: 120px;\n+    background-color:rgb(241, 208, 208);\n+    width: 192px;\n+    padding: 10px;\n+    border-radius:10px;\n+    border-style: solid;\n+    border-width: 2px;\n+    border-color: red;\n+    font-size: 15px;\n+    color: red;\n+}\n+.successMsg{\n+    text-align: center;\n+    margin-left: 120px;\n+    background-color:rgb(219, 236, 229);\n+    width: 192px;\n+    padding: 10px;\n+    border-radius:10px;\n+    border-style: solid;\n+    border-width: 2px;\n+    border-color: green;\n+    font-size: 15px;\n+    color: green;\n+}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1736819445444,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,46 @@\n+@import url('https://fonts.googleapis.com/css2?family=Freehand:wght@400&display=swap');\n+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');\n+html, body {\n+    height: 100%;\n+    margin: 0;\n+  }\n+  \n+  body {\n+    font-size: 20px;\n+    font-family: 'Roboto', sans-serif;\n+    background-color: #f8f8f8;\n+    overflow-x: hidden;\n+  }\n+\n+  @media (max-width: 768px) { \n+    body{\n+  overflow-x: hidden;\n+   }\n+  }\n+\n+.errorMsg{\n+    text-align: center;\n+    margin-left: 120px;\n+    background-color:rgb(241, 208, 208);\n+    width: 192px;\n+    padding: 10px;\n+    border-radius:10px;\n+    border-style: solid;\n+    border-width: 2px;\n+    border-color: red;\n+    font-size: 15px;\n+    color: red;\n+}\n+.successMsg{\n+    text-align: center;\n+    margin-left: 120px;\n+    background-color:rgb(219, 236, 229);\n+    width: 192px;\n+    padding: 10px;\n+    border-radius:10px;\n+    border-style: solid;\n+    border-width: 2px;\n+    border-color: green;\n+    font-size: 15px;\n+    color: green;\n+}\n\\ No newline at end of file\n"
                 }
             ],
             "date": 1736818139117,

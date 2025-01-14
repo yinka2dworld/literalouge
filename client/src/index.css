@@ -9,11 +9,12 @@ html, body {
     font-size: 20px;
     font-family: 'Roboto', sans-serif;
     background-color: #f8f8f8;
+    overflow-x: hidden;
   }
 
   @media (max-width: 768px) { 
     body{
-  overflow-x: clip;
+  overflow-x: hidden;
    }
   }
 

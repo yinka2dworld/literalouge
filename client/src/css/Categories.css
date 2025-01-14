@@ -9,7 +9,7 @@
 }
 
 .categories-title {
-    font-size: 1.8rem;
+    font-size: 1.2rem;
     color: #070c70;
     margin-bottom: 1.5rem;
     font-weight: bold;
@@ -20,7 +20,7 @@
 
 .categories-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     gap: 1.5rem;
     justify-items: center;
 }
@@ -81,5 +81,8 @@
 @media (max-width: 768px) {
    .categories-container{
     margin: 0 auto 0;
+   }
+   .category-card{
+    min-width: 50px;
    }
 }

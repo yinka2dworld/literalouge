@@ -15,7 +15,7 @@ const Categories = () => {
 
     return (
         <div className="categories-container">
-            <h2 className="categories-title">Book Categories</h2>
+            <h2 className="categories-title">Categories</h2>
             <div className="categories-grid">
                 {categories.map((category, index) => (
                     <a href={`/home/${category}`} key={index} className="category-card">

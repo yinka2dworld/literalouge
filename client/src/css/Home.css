@@ -128,8 +128,8 @@
     }
 
     .categories-sidebar {
-        width: 100%;
-        margin: 0 auto;
+        width: 80%;
+        margin: 0 auto 0;
         max-width: 20rem;
         order: 2; /* Move below the catalog-section */
     }

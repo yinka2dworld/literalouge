@@ -77,3 +77,9 @@
     color: #ffffff;
 }
 
+
+@media (max-width: 768px) {
+   .categories-container{
+    margin: 0 auto 0;
+   }
+}

@@ -145,12 +145,12 @@
     }
 
     .admin-icons {
-        gap: 15px;
+        gap: 30px;
         padding-right: 20px;
     }
 
     .icon {
-        font-size: 1.2rem;
+        font-size: 2rem;
     }
     .buttons-div{
         gap: 150px;

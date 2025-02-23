@@ -119,7 +119,8 @@ export const resolvers = {
         }
         if (bookFile) {
           uploadPromises.push(
-            uploadToLocalStorage(bookFile).then(url => { bookFileUrl = url; })
+            // uploadToLocalStorage(bookFile).then(url => { bookFileUrl = url; })
+            uploadToCloudinary(bookFile).then(url => { bookFileUrl = url; })
           );
         }
         if (uploadPromises.length > 0) {

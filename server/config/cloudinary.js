@@ -1,14 +1,9 @@
 import { v2 as cloudinary } from 'cloudinary'
 import dotenv from 'dotenv';
-import { tokenChecker } from "../middleware/auth.js";
 import { finished } from 'stream/promises';
 import { v4 as uuidv4 } from 'uuid';
-import { fileURLToPath } from 'url';
 import fs from 'fs';
 import path from 'path';
-
-
-const __filename = fileURLToPath(import.meta.url);
 
 
 
@@ -22,35 +17,20 @@ cloudinary.config({
 })
 
  
-export const applyTokenChecker = (resolver, isExcluded = false) => {
-  return (parent, args, context, info) => {
-      if (!isExcluded) {
-          tokenChecker(context.req, context.res, () => {
-              return resolver(parent, args, context, info);
-          });
-      } else {
-          return resolver(parent, args, context, info);
-      }
-  };
-};
-
 export const uploadToCloudinary = async (file) => {
   try {
     const { createReadStream, filename, mimetype } = await file;
     const fileExtension = filename.split('.').pop();
     const originalFileName = filename.replace(`.${fileExtension}`, '');
-    
-    let resourceType;
+   let resourceType;
     if (mimetype.startsWith('image')) {
       resourceType = 'image';
     } else if (mimetype === 'application/pdf') {
       resourceType = 'raw'; 
     } else {
       throw new Error(`Unsupported file type: ${mimetype}`);
-    }
-    
+    }  
     const publicId = originalFileName;
-
     return new Promise((resolve, reject) => {
       const stream = createReadStream();
       const cloudinaryStream = cloudinary.uploader.upload_stream(
@@ -77,46 +57,28 @@ export const uploadToCloudinary = async (file) => {
 };
 
 
-export const uploadToLocalStorage = async (upload) => {
-  const { createReadStream, filename, mimetype } = await upload;
-  const stream = createReadStream();
-  const uniqueFilename = uuidv4() + '-' + Date.now() + path.extname(filename);
-  const filepath = path.join('utils', 'books', uniqueFilename);
-  
-  // Pipe the file to a local destination
-  const out = fs.createWriteStream(filepath);
-  stream.pipe(out);
-  await finished(out); // Wait for the stream to finish
-
-  return filepath; // Return the path or URL as needed
-};
-
-export const deleteFileFromLocalStorage = (filePath) => {
-  const resolvedPath = path.join(__dirname,filePath);
-  console.log('Deleting file:', resolvedPath);
-
-  fs.unlink(resolvedPath, (error) => {
-    if (error) {
-      console.error('Error deleting file:', error);
-    } else {
-      console.log('File deleted successfully');
-    }
-  });
-}
-
-export const deleteFileFromCloudinary = async (publicId) => {
-  if (!publicId) {
-    throw new Error('No public ID provided.');
+export const deleteFileFromCloudinary = async (url) => {
+  if (!url) {
+    throw new Error('No URL provided.');
   }
-  try {
-    console.log(`Attempting to delete file with public ID: ${publicId}`); 
-    const fileDeleter = await cloudinary.uploader.destroy(publicId);
-    console.log('Cloudinary result for deletion:', result);
+  console.log(`Extracting public ID from URL: ${url}`);
+  const match = url.match(/\/([^/]+)\.(jpg|jpeg|png|gif|pdf|mp3)$/);
+  if (!match) {
+    throw new Error('Failed to extract public ID from URL.');
+  }
+  const publicId = `literalouge/${match[1]}`;
+  console.log(`Extracted public ID: ${publicId}`);
 
-    if (fileDeleter.result === 'ok') {
+  try {
+    console.log(`Attempting to delete file with public ID: ${publicId}`);
+    const deletionResult = await cloudinary.uploader.destroy(publicId);
+    console.log('Cloudinary deletion result:', deletionResult);
+
+    if (deletionResult.result === 'ok') {
       console.log(`Cloudinary file with public ID ${publicId} deleted successfully.`);
+      return deletionResult;
     } else {
-      throw new Error(`Failed to delete the file from Cloudinary. Response: ${JSON.stringify(result)}`);
+      throw new Error(`Failed to delete the file from Cloudinary. Response: ${JSON.stringify(deletionResult)}`);
     }
   } catch (error) {
     console.error(`Error deleting file from Cloudinary with public ID ${publicId}:`, error.message);
@@ -125,13 +87,30 @@ export const deleteFileFromCloudinary = async (publicId) => {
 };
 
 
-export const extractPublicId = (url) => {
-  console.log(`Extracting public ID from URL: ${url}`);
-  const match = url.match(/\/([^/]+)\.(jpg|jpeg|png|gif|pdf|mp3)$/);
-  if (match) {
-    console.log(`Extracted public ID: ${match[1]}`);
-    return match[1];
-  }
-  console.warn('Failed to extract public ID from URL.');
-  return null;
+export const uploadToLocalStorage = async (upload) => {
+  const { createReadStream, filename, mimetype } = await upload;
+  const stream = createReadStream();
+  const uniqueFilename = uuidv4() + '-' + Date.now() + path.extname(filename);
+  const filepath = path.join('utils', 'books', uniqueFilename);
+  const out = fs.createWriteStream(filepath);
+  stream.pipe(out);
+  await finished(out); 
+  return filepath; 
 };
+
+
+export const deleteFileFromLocalStorage = (filePath) => {
+  console.log('Deleting file:', filePath);
+  fs.unlink(filePath, (error) => {
+    if (error) {
+      console.error('Error deleting file:', error);
+    } else {
+      console.log('File deleted successfully');
+    }
+  });
+}
+
+
+
+
+

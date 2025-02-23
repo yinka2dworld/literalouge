@@ -119,8 +119,8 @@ export const resolvers = {
         }
         if (bookFile) {
           uploadPromises.push(
-            // uploadToLocalStorage(bookFile).then(url => { bookFileUrl = url; })
-            uploadToCloudinary(bookFile).then(url => { bookFileUrl = url; })
+            uploadToLocalStorage(bookFile).then(url => { bookFileUrl = url; })
+            // uploadToCloudinary(bookFile).then(url => { bookFileUrl = url; })
           );
         }
         if (uploadPromises.length > 0) {
@@ -207,7 +207,8 @@ export const resolvers = {
         if (book.bookFile) {
           console.log(`Deleting book file: ${book.bookFile}`);
           try {
-            await deleteFileFromLocalStorage(book.bookFile);
+            // await deleteFileFromLocalStorage(book.bookFile);
+            await deleteFileFromCloudinary(book.bookFile);
           } catch (error) {
             console.error(`Failed to delete book file: ${error.message}`);
           }

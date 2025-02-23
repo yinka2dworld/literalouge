@@ -62,7 +62,7 @@ export const deleteFileFromCloudinary = async (url) => {
     throw new Error('No URL provided.');
   }
   console.log(`Extracting public ID from URL: ${url}`);
-  const match = url.match(/\/([^/]+)\.(jpg|jpeg|png|gif|pdf|mp3)$/);
+  const match = url.match(/\/([^/]+)\.(jpg|jpeg|png|gif|pdf|mp3|epub)$/);
   if (!match) {
     throw new Error('Failed to extract public ID from URL.');
   }

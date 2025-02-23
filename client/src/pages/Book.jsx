@@ -141,7 +141,7 @@ const Book = () => {
                 Download
               </button>
 
-              {(role === 'superAdmin') && (
+              {role &&  (role === 'superAdmin') && (
                 <div className="admin-icons">
                   <FaTrash
                     className="icon delete-icon"

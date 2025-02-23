@@ -92,7 +92,7 @@ const Home = () => {
                 </main>
             </div>
         
-            {role != 'user' ? (
+            {role &&  (role === 'superAdmin' || role === 'admin') ? (
                 <button className="addBook">
                     <Link onClick={() => window.scrollTo(0,0)} to={'/admin/addBook'} style={{ textDecoration: 'none', color: '#ffffff' }}>
                         +

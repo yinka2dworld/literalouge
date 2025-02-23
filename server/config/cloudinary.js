@@ -81,7 +81,7 @@ export const uploadToLocalStorage = async (upload) => {
   const { createReadStream, filename, mimetype } = await upload;
   const stream = createReadStream();
   const uniqueFilename = uuidv4() + '-' + Date.now() + path.extname(filename);
-  const filepath = path.join('books', uniqueFilename);
+  const filepath = path.join('utils', 'books', uniqueFilename);
   
   // Pipe the file to a local destination
   const out = fs.createWriteStream(filepath);
@@ -91,7 +91,20 @@ export const uploadToLocalStorage = async (upload) => {
   return filepath; // Return the path or URL as needed
 };
 
-export const deleteOldFileFromCloudinary = async (publicId) => {
+export const deleteFileFromLocalStorage = (filePath) => {
+  const resolvedPath = path.join(__dirname,filePath);
+  console.log('Deleting file:', resolvedPath);
+
+  fs.unlink(resolvedPath, (error) => {
+    if (error) {
+      console.error('Error deleting file:', error);
+    } else {
+      console.log('File deleted successfully');
+    }
+  });
+}
+
+export const deleteFileFromCloudinary = async (publicId) => {
   if (!publicId) {
     throw new Error('No public ID provided.');
   }

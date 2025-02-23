@@ -4,7 +4,7 @@ import bcrypt from "bcrypt";
 import { GraphQLUpload } from 'graphql-upload';
 import { Op } from 'sequelize';   
 import jwt from'jsonwebtoken';
-import { applyTokenChecker, uploadToLocalStorage, uploadToCloudinary, deleteOldFileFromCloudinary, extractPublicId } from "../config/cloudinary.js";
+import { applyTokenChecker, uploadToLocalStorage, uploadToCloudinary, deleteFileFromLocalStorage, deleteFileFromCloudinary, extractPublicId } from "../config/cloudinary.js";
 
 
 
@@ -166,7 +166,7 @@ export const resolvers = {
     if (coverPublicId) {
       console.log(`Deleting book cover with public ID: ${coverPublicId}`);
       try {
-        await deleteOldFileFromCloudinary(coverPublicId);
+        await deleteFileFromCloudinary(coverPublicId);
       } catch (error) {
         console.error(`Failed to delete book cover: ${error.message}`);
       }
@@ -174,18 +174,15 @@ export const resolvers = {
       console.warn('No valid public ID found for book cover.');
         }
       }
+      
   if (book.bookFile) {
-    const filePublicId = extractPublicId(book.bookFile);
-    if (filePublicId) {
-      console.log(`Deleting book file with public ID: ${filePublicId}`);
+ console.log(`Deleting book file with public ID: ${book.bookFile}`);
       try {
-        await deleteOldFileFromCloudinary(filePublicId);
+        await deleteFileFrom(book.bookFile);
       } catch (error) {
         console.error(`Failed to delete book file: ${error.message}`);
       }
-    } else {
-      console.warn('No valid public ID found for book file.');
-    }
+    
   }
         const deleteCount = await Book.destroy({ where: { id } });
         if (deleteCount === 0) {

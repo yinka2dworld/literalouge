@@ -63,8 +63,8 @@ const Book = () => {
   };
 
   const handleDownload = () => {
-    const pdfUrl = book?.bookFile;
-    const pdfName = `literalouge.com ${book?.bookName || 'book'}.pdf`;
+    const pdfUrl =book?.bookFile;
+    const pdfName = `${book?.bookName}(literalouge.com).pdf`;
 
     if (!pdfUrl) {
       alert('File not available for download.');

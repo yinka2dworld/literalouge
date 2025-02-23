@@ -33,7 +33,7 @@ const Footer = () => {
         </div>
     </div>
     
-      <Link href="https://okin.onrender.com/" target="_blank" rel="noopener noreferrer" style={{color:"#070C70"}} className="footer-link" >&copy; {year} CodeX - All Rights Reserved | Ọkín technologies</Link> 
+      <Link href="https://okin.onrender.com/" target="_blank" rel="noopener noreferrer" style={{color:"#070C70"}} className="footer-link" >&copy; {year} Literalouge - All Rights Reserved | Ọkín technologies</Link> 
       </footer> 
 </>
     )

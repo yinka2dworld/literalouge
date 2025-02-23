@@ -1,6 +1,14 @@
 import { v2 as cloudinary } from 'cloudinary'
 import dotenv from 'dotenv';
 import { tokenChecker } from "../middleware/auth.js";
+import { finished } from 'stream/promises';
+import { v4 as uuidv4 } from 'uuid';
+import { fileURLToPath } from 'url';
+import fs from 'fs';
+import path from 'path';
+
+
+const __filename = fileURLToPath(import.meta.url);
 
 
 
@@ -69,6 +77,19 @@ export const uploadToCloudinary = async (file) => {
 };
 
 
+export const uploadToLocalStorage = async (upload) => {
+  const { createReadStream, filename, mimetype } = await upload;
+  const stream = createReadStream();
+  const uniqueFilename = uuidv4() + '-' + Date.now() + path.extname(filename);
+  const filepath = path.join('books', uniqueFilename);
+  
+  // Pipe the file to a local destination
+  const out = fs.createWriteStream(filepath);
+  stream.pipe(out);
+  await finished(out); // Wait for the stream to finish
+
+  return filepath; // Return the path or URL as needed
+};
 
 export const deleteOldFileFromCloudinary = async (publicId) => {
   if (!publicId) {

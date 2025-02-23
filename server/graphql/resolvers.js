@@ -4,7 +4,7 @@ import bcrypt from "bcrypt";
 import { GraphQLUpload } from 'graphql-upload';
 import { Op } from 'sequelize';   
 import jwt from'jsonwebtoken';
-import { applyTokenChecker, uploadToCloudinary, deleteOldFileFromCloudinary, extractPublicId } from "../config/cloudinary.js";
+import { applyTokenChecker, uploadToLocalStorage, uploadToCloudinary, deleteOldFileFromCloudinary, extractPublicId } from "../config/cloudinary.js";
 
 
 
@@ -101,7 +101,7 @@ export const resolvers = {
           throw new Error("All required fields (except files) must be provided.");
         }
         const bookCoverUrl = bookCover ? await uploadToCloudinary(bookCover) : null;
-        const bookFileUrl = bookFile ? await uploadToCloudinary(bookFile) : null;
+        const bookFileUrl = bookFile ? await uploadToLocalStorage(bookFile) : null;
         const newBook = await Book.create({
           bookCover: bookCoverUrl,
           bookName,

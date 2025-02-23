@@ -10,6 +10,7 @@ import { seedAdmin } from './utils/seeder.js';
 // Load environment variables from .env file
 dotenv.config();
 
+
 // Start the server asynchronously
 const startServer = async () => {
   try {
@@ -27,13 +28,14 @@ const startServer = async () => {
 
     // Create an Express app instance
     const app = express();
-    const port = process.env.PORT || 4000; // Use environment variable or default to 4000
+    const port = process.env.PORT; // Use environment variable or default to 4000
 
     // Middleware for handling file uploads
     app.use(graphqlUploadExpress());
+    
+    app.use('/books', express.static('books'));
 
-    // Seed the admin user if necessary
-    await seedAdmin();
+    // await seedAdmin();
 
     // Middleware for handling JSON requests
     app.use(express.json());

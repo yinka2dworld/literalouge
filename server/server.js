@@ -9,6 +9,8 @@ import { resolvers } from './graphql/resolvers.js';
 
 dotenv.config();
 
+
+
 const startServer = async () => {
   try {
     // Create an ApolloServer instance with a context that verifies the token (if provided)

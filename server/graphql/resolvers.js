@@ -1,5 +1,5 @@
 import { AuthenticationError } from 'apollo-server-express';
-import { uploadToLocalStorage, uploadToCloudinary, deleteFileFromLocalStorage, deleteFileFromCloudinary } from "../config/cloudinary.js";
+import { uploadToCloudinary, deleteFileFromCloudinary } from "../config/upload.js";
 import Book from "../models/book.js";
 import User from "../models/user.js";
 import bcrypt from "bcrypt";
@@ -119,8 +119,7 @@ export const resolvers = {
         }
         if (bookFile) {
           uploadPromises.push(
-            uploadToLocalStorage(bookFile).then(url => { bookFileUrl = url; })
-            // uploadToCloudinary(bookFile).then(url => { bookFileUrl = url; })
+            uploadToCloudinary(bookFile).then(url => { bookFileUrl = url; })
           );
         }
         if (uploadPromises.length > 0) {
@@ -164,7 +163,7 @@ export const resolvers = {
           throw new Error('Book not found');
         }
         const bookCoverUrl = bookCover ? await uploadToCloudinary(bookCover) : existingBook.bookCover;
-        const bookFileUrl = bookFile ? await uploadToLocalStorage(bookFile) : existingBook.bookFile;
+        const bookFileUrl = bookFile ? await uploadToCloudinary(bookFile) : existingBook.bookFile;
         const [updateCount] = await Book.update(
           {
             bookCover: bookCoverUrl || existingBook.bookCover,
@@ -188,41 +187,42 @@ export const resolvers = {
     },
 
     deleteBook: async (_, { id }, { req }) => {
-      if (!req || !req.user) {
+      if (!req?.user) {
         throw new AuthenticationError('Not authenticated');
       }
-      try {
-        const book = await Book.findByPk(id);
-        if (!book) {
-          throw new Error('Book not found.');
-        }
-        if (book.bookCover) {
-          console.log(`Deleting book cover: ${book.bookCover}`);
-          try {
-            await deleteFileFromCloudinary(book.bookCover);
-          } catch (error) {
-            console.error(`Failed to delete book cover: ${error.message}`);
-          }
-        }
-        if (book.bookFile) {
-          console.log(`Deleting book file: ${book.bookFile}`);
-          try {
-            // await deleteFileFromLocalStorage(book.bookFile);
-            await deleteFileFromCloudinary(book.bookFile);
-          } catch (error) {
-            console.error(`Failed to delete book file: ${error.message}`);
-          }
-        }
-        const deleteCount = await Book.destroy({ where: { id } });
-        if (deleteCount === 0) {
-          throw new Error('Failed to delete book from the database.');
-        }
-        return { success: true, message: 'Book and associated files deleted successfully.' };
-      } catch (error) {
-        console.error('Error during deleteBook operation:', error.message);
-        return { success: false, message: `Error deleting book: ${error.message}` };
+      
+      const book = await Book.findByPk(id);
+      if (!book) throw new Error('Book not found.');
+    
+      // Delete associated Cloudinary files concurrently
+      const deletionTasks = [];
+      if (book.bookCover) {
+        console.log(`Deleting book cover: ${book.bookCover}`);
+        deletionTasks.push(
+          deleteFileFromCloudinary(book.bookCover)
+            .then(() => console.log('Book cover deleted from Cloudinary.'))
+            .catch((error) => console.error('Failed to delete book cover:', error.message))
+        );
       }
+      if (book.bookFile) {
+        console.log(`Deleting book file: ${book.bookFile}`);
+        deletionTasks.push(
+          deleteFileFromCloudinary(book.bookFile)
+            .then(() => console.log('Book file deleted from Cloudinary.'))
+            .catch((error) => console.error('Failed to delete book file:', error.message))
+        );
+      }
+      
+      // Wait for all deletion tasks to finish (errors are logged but do not block deletion)
+      await Promise.all(deletionTasks);
+    
+      // Delete the book record from the database
+      const deleteCount = await Book.destroy({ where: { id } });
+      if (deleteCount === 0) throw new Error('Failed to delete book from the database.');
+      
+      return { success: true, message: 'Book and associated files deleted successfully.' };
     },
+    
 
     // Public mutations: signup and login do not require authentication
     signup: async (_, args) => {

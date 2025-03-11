@@ -55,12 +55,13 @@ const Home = () => {
                                       <Skeleton width={`60%`} />
                                   </div>
                               ))
-                            : data.books.allBooks.map(({ id, bookCover, bookName, bookAuthor }) => (
+                            : data.books.allBooks.map(({ id, bookCover, bookName, bookAuthor,  bookLanguage }) => (
                                   <Link className="catalog-link" onClick={(() =>window.scrollTo(0,0))} to={`/home/${id}`} key={id}>
                                       <Books
                                           bookCover={bookCover}
                                           bookName={bookName}
                                           bookAuthor={bookAuthor}
+                                          bookLanguage={bookLanguage}  
                                       />
                                   </Link>
                               ))}

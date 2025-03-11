@@ -20,6 +20,7 @@ query SearchBooks($searchTerm: String!) {
     bookCover,
     bookName,
     bookAuthor
+    bookLanguage
     }
     currentPage
     previousPage

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 18,
+            "activePatchIndex": 26,
             "patches": [
                 {
                     "date": 1736577395438,
@@ -80,6 +80,38 @@
                 {
                     "date": 1740318727217,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,10 +7,10 @@\n import Footer from '../layout/Footer';\r\n \r\n const AddBook = () => {\r\n   const navigate = useNavigate();\r\n-  \r\n-  // Initialize form state\r\n+\r\n+  // Initialize state for form inputs\r\n   const [formData, setFormData] = useState({\r\n     bookCover: null,\r\n     bookName: '',\r\n     bookDescription: '',\r\n@@ -19,40 +19,39 @@\n     bookLanguage: '',\r\n     bookFile: null,\r\n   });\r\n \r\n-  // Prepare mutation hook with loading and error handling\r\n+  // Mutation hook with loading and error tracking\r\n   const [addBook, { loading: addingBook, error: addBookError }] = useMutation(ADDBOOK);\r\n \r\n-  // Update state when input changes\r\n+  // Handle changes for text and file inputs\r\n   const handleInputChange = (e) => {\r\n     const { name, value, files } = e.target;\r\n     setFormData((prev) => ({\r\n       ...prev,\r\n       [name]: files ? files[0] : value,\r\n     }));\r\n   };\r\n \r\n-  // A stub for file upload processing (if needed)\r\n+  // Stub for file upload processing (if needed)\r\n   const handleFileUpload = async (file) => {\r\n     if (!file) return null;\r\n-    // Simulate file upload logic or preprocessing here if needed.\r\n+    // You can add file preprocessing here if needed.\r\n     return file;\r\n   };\r\n \r\n-  // Handles the addBook mutation submission\r\n+  // Form submission handler for adding a book\r\n   const bookAdder = async (e) => {\r\n     e.preventDefault();\r\n-\r\n     try {\r\n-      // Retrieve token from local storage (ensure token is stored under the same key)\r\n+      // Retrieve token from local storage\r\n       const token = localStorage.getItem('token');\r\n-\r\n-      // Process files if provided (could be replaced with actual upload logic)\r\n+      \r\n+      // Process file uploads (this can be replaced with actual logic)\r\n       const bookCover = await handleFileUpload(formData.bookCover);\r\n       const bookFile = await handleFileUpload(formData.bookFile);\r\n \r\n-      // Execute the mutation with variables and context including the token\r\n+      // Execute the mutation with variables and pass the token in the context\r\n       const { data } = await addBook({\r\n         variables: {\r\n           addbook: {\r\n             bookName: formData.bookName,\r\n@@ -77,9 +76,9 @@\n       console.error('Error adding book:', err.message);\r\n     }\r\n   };\r\n \r\n-  // Example category and language arrays\r\n+  // Sample category and language arrays\r\n   const categories = [\r\n     'Fiction',\r\n     'Non-Fiction',\r\n     'Science',\r\n"
+                },
+                {
+                    "date": 1741701944391,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -96,8 +96,9 @@\n     'Hausa',\r\n     'Somali',\r\n     'Shona',\r\n     'Oromo',\r\n+    \r\n     'Fulbe',\r\n     'Wollof',\r\n     'Xhosa',\r\n     'Afar',\r\n"
+                },
+                {
+                    "date": 1741701950534,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -96,9 +96,9 @@\n     'Hausa',\r\n     'Somali',\r\n     'Shona',\r\n     'Oromo',\r\n-    \r\n+     '',\r\n     'Fulbe',\r\n     'Wollof',\r\n     'Xhosa',\r\n     'Afar',\r\n"
+                },
+                {
+                    "date": 1741701971082,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -217,5 +217,5 @@\n     </div>\r\n   );\r\n };\r\n \r\n-export default AddBook;\r\n\\ No newline at end of file\n+export default AddBook;\r\n"
+                },
+                {
+                    "date": 1741701980083,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -96,10 +96,10 @@\n     'Hausa',\r\n     'Somali',\r\n     'Shona',\r\n     'Oromo',\r\n-     '',\r\n-    'Fulbe',\r\n+     'Igbo',\r\n+    'Fulb/Fulani',\r\n     'Wollof',\r\n     'Xhosa',\r\n     'Afar',\r\n     'Akan',\r\n@@ -218,5 +218,4 @@\n   );\r\n };\r\n \r\n export default AddBook;\r\n-\n"
+                },
+                {
+                    "date": 1741701987412,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -97,9 +97,9 @@\n     'Somali',\r\n     'Shona',\r\n     'Oromo',\r\n      'Igbo',\r\n-    'Fulb/Fulani',\r\n+    'Fulbe/pul',\r\n     'Wollof',\r\n     'Xhosa',\r\n     'Afar',\r\n     'Akan',\r\n"
+                },
+                {
+                    "date": 1741701995094,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -97,9 +97,9 @@\n     'Somali',\r\n     'Shona',\r\n     'Oromo',\r\n      'Igbo',\r\n-    'Fulbe/pul',\r\n+    'Fulbe/Pula',\r\n     'Wollof',\r\n     'Xhosa',\r\n     'Afar',\r\n     'Akan',\r\n"
+                },
+                {
+                    "date": 1741702000432,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -217,5 +217,5 @@\n     </div>\r\n   );\r\n };\r\n \r\n-export default AddBook;\r\n\\ No newline at end of file\n+export default AddBook;\r\n"
+                },
+                {
+                    "date": 1741702050068,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -97,9 +97,9 @@\n     'Somali',\r\n     'Shona',\r\n     'Oromo',\r\n      'Igbo',\r\n-    'Fulbe/Pula',\r\n+    'Fulani',\r\n     'Wollof',\r\n     'Xhosa',\r\n     'Afar',\r\n     'Akan',\r\n@@ -218,5 +218,4 @@\n   );\r\n };\r\n \r\n export default AddBook;\r\n-\n"
                 }
             ],
             "date": 1736577395438,

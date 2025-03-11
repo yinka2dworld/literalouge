@@ -1,0 +1,22 @@
+{
+    "sourceFile": "client/src/graphql/queries.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1741702337664,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1741702411403,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n     id,\r\n     bookCover,\r\n     bookName,\r\n     bookAuthor\r\n-    \r\n+    bookLanguage\r\n     }\r\n     currentPage\r\n     previousPage\r\n     nextPage\r\n"
+                }
+            ],
+            "date": 1741702337664,
+            "name": "Commit-0",
+            "content": "import {  gql } from '@apollo/client';\r\n\r\n\r\nexport const SEARCHBOOK = gql`\r\nquery SearchBooks($searchTerm: String!) {\r\n  searchBooks(searchTerm: $searchTerm) {\r\n    id\r\n    bookName\r\n    bookAuthor\r\n  }\r\n}\r\n`;\r\n\r\n\r\n  export const BOOKS = gql`\r\n  query Books($page: Int, $perPage: Int) {\r\n  books(page: $page, perPage: $perPage) {\r\n    allBooks {\r\n    id,\r\n    bookCover,\r\n    bookName,\r\n    bookAuthor\r\n    \r\n    }\r\n    currentPage\r\n    previousPage\r\n    nextPage\r\n    lastPage\r\n  }\r\n}\r\n`;\r\n\r\n \r\nexport const BOOK = gql`\r\nquery Book($bookId: ID!) {\r\n  book(id: $bookId) {\r\n    id\r\n    bookCover\r\n    bookName\r\n    bookDescription\r\n    bookAuthor\r\n    bookCategory\r\n    bookLanguage\r\n    bookFile\r\n    createdAt\r\n  }\r\n}\r\n`;\r\n\r\n\r\n\r\nexport const USERS = gql`\r\n query Users {\r\n  users {\r\n    id\r\n    profilePic\r\n    fullName\r\n    username\r\n    phoneNumber\r\n    email\r\n    password\r\n  }\r\n}\r\n`;\r\n\r\nexport const USER = gql`\r\n query User($userId: ID!) {\r\n  user(id: $userId) {\r\n    id\r\n    profilePic\r\n    fullName\r\n    username\r\n    phoneNumber\r\n    email\r\n    password\r\n  }\r\n}\r\n`;"
+        }
+    ]
+}

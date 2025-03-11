@@ -1,6 +1,6 @@
 import '../css/layout.css';
 
-const Books = ({ bookCover, bookName, bookAuthor }) => {
+const Books = ({ bookCover, bookName, bookAuthor, bookLanguage }) => {
     return (
         <div className="book-card">
             {/* Book Cover */}
@@ -18,7 +18,8 @@ const Books = ({ bookCover, bookName, bookAuthor }) => {
                 >
                     {bookName}
                 </h2>
-                <p className="book-author">{bookAuthor}</p>
+                <p style={{ color: '#666', fontSize: 'small'}}>{bookAuthor}</p>
+                <p>{bookLanguage}</p>
             </div>
         </div>
     );

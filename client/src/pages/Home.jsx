@@ -71,7 +71,10 @@ const Home = () => {
                         <div className="pagination">
                             <button
                                 className="pag"
-                                onClick={handlePreviousPage}
+                                onClick={() => {
+                                    handlePreviousPage(); 
+                                    window.scrollTo(0, 0); 
+                                }}
                                 disabled={currentPage === 1}
                                 aria-label="Previous page"
                             >
@@ -82,7 +85,10 @@ const Home = () => {
                             </span>
                             <button
                                 className="pag"
-                                onClick={handleNextPage}
+                                onClick={() => {
+                            handleNextPage()
+                            window.scrollTo(0, 0)
+                                }}
                                 disabled={currentPage === data.books.lastPage}
                                 aria-label="Next page"
                             >

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 30,
+            "activePatchIndex": 31,
             "patches": [
                 {
                     "date": 1740473351490,
@@ -128,6 +128,10 @@
                 {
                     "date": 1740476332326,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,11 +13,51 @@\n  mimetype === 'application/pdf' ||\r\n       mimetype === 'application/epub+zip'\r\n \r\n \r\n+      export const uploadToCloudinary = async (file) => {\r\n+        try {\r\n+          const { createReadStream, filename, mimetype } = await file;\r\n+          const fileExtension = filename.split('.').pop();\r\n+          const originalFileName = filename.replace(`.${fileExtension}`, '');\r\n+          \r\n+          let resourceType;\r\n+          if (mimetype.startsWith('image')) {\r\n+            resourceType = 'image';\r\n+          } else if (mimetype === 'application/pdf') {\r\n+            resourceType = 'raw'; \r\n+          } else {\r\n+            throw new Error(`Unsupported file type: ${mimetype}`);\r\n+          }\r\n+          \r\n+          const publicId = originalFileName;\r\n+      \r\n+          return new Promise((resolve, reject) => {\r\n+            const stream = createReadStream();\r\n+            const cloudinaryStream = cloudinary.uploader.upload_stream(\r\n+              {\r\n+                folder: 'literalouge',\r\n+                resource_type: resourceType,\r\n+                public_id: publicId,\r\n+              },\r\n+              (error, result) => {\r\n+                if (error) {\r\n+                  console.error(`Cloudinary upload error for file ${filename}:`, error);\r\n+                  return reject(new Error(`Cloudinary upload failed for ${filename}: ${error.message}`));\r\n+                }\r\n+                console.log(`File ${filename} uploaded successfully. Secure URL:`, result.secure_url);\r\n+                resolve(result.secure_url);\r\n+              }\r\n+            );\r\n+            stream.pipe(cloudinaryStream);\r\n+          });\r\n+        } catch (err) {\r\n+          console.error('Error in file upload process:', err);\r\n+          throw new Error('File upload process failed');\r\n+        }\r\n+      };\r\n \r\n \r\n-\r\n export const deleteFileFromCloudinary = async (url) => {\r\n   if (!url) {\r\n     throw new Error('No URL provided.');\r\n   }\r\n"
+                },
+                {
+                    "date": 1741794852181,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -101,9 +101,9 @@\n             throw new Error('No URL provided.');\r\n           }\r\n           console.log(`Extracting public ID from URL: ${url}`);\r\n           const decodedUrl = decodeURIComponent(url)\r\n-          const publicId = \"literalouge/\"; // Assuming it's stored under this public ID in Cloudinary\r\n+          const publicId = \"literalouge/d\"; // Assuming it's stored under this public ID in Cloudinary\r\n       \r\n           console.log(`Attempting to delete Cloudinary file with public ID: ${publicId}`);\r\n       \r\n           const deletionResult = await cloudinary.uploader.destroy(publicId, {\r\n"
                 }
             ],
             "date": 1740473351490,

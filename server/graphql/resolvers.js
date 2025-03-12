@@ -1,5 +1,5 @@
 import { AuthenticationError } from 'apollo-server-express';
-import { uploadToCloudinary, deleteFileFromCloudinary } from "../config/upload.js";
+import { uploadToCloudinary, deleteFileFromCloudinary, deleteNAFileFromCloudinary } from "../config/upload.js";
 import Book from "../models/book.js";
 import User from "../models/user.js";
 import bcrypt from "bcrypt";
@@ -87,7 +87,6 @@ export const resolvers = {
   Mutation: {
 
     addBook: async (_, { addbook }, { req }) => {
-      // Manual authentication check – only protected mutations need this
       if (!req || !req.user) {
         throw new AuthenticationError('Not authenticated');
       }
@@ -102,7 +101,6 @@ export const resolvers = {
           bookFile,
         } = addbook;
         
-        // Validate required fields (except files)
         if (!bookName || !bookDescription || !bookAuthor || !bookCategory || !bookLanguage) {
           throw new Error("All required fields (except files) must be provided.");
         }
@@ -111,7 +109,6 @@ export const resolvers = {
         let bookFileUrl = null;
         const uploadPromises = [];
         
-        // Process file uploads concurrently, if provided
         if (bookCover) {
           uploadPromises.push(
             uploadToCloudinary(bookCover).then(url => { bookCoverUrl = url; })
@@ -128,7 +125,6 @@ export const resolvers = {
         
         console.log("Authenticated user:", req.user);
         
-        // Create the new book record in the database
         const newBook = await Book.create({
           bookCover: bookCoverUrl,
           bookName,
@@ -147,44 +143,79 @@ export const resolvers = {
       }
     },
 
+
+    updateBook: async (_, { id, updatebook }, { req }) => {
+      console.log("Received id in resolver:", id);
     
-
-
-    // The following mutations (updateBook, deleteBook, updateUser, deleteUser) would follow a similar pattern:
-    updateBook: async (_, args, { req }) => {
       if (!req || !req.user) {
-        throw new AuthenticationError('Not authenticated');
+        throw new AuthenticationError("Not authenticated");
       }
+    
       try {
-        const { updatebook } = args;
         const { bookCover, bookName, bookDescription, bookAuthor, bookCategory, bookLanguage, bookFile } = updatebook;
-        const existingBook = await Book.findOne({ where: { id: args.id } });
+    
+        // Fetch existing book data
+        const existingBook = await Book.findOne({ where: { id } });
         if (!existingBook) {
-          throw new Error('Book not found');
+          throw new Error("Book not found");
         }
-        const bookCoverUrl = bookCover ? await uploadToCloudinary(bookCover) : existingBook.bookCover;
-        const bookFileUrl = bookFile ? await uploadToCloudinary(bookFile) : existingBook.bookFile;
-        const [updateCount] = await Book.update(
+    
+        let bookCoverUrl = existingBook.bookCover;
+        let bookFileUrl = existingBook.bookFile;
+        const uploadPromises = [];
+    
+        // Delete previous book cover and upload a new one if provided
+        if (bookCover) {
+          if (existingBook.bookCover) {
+            await deleteFileFromCloudinary(existingBook.bookCover);
+          }
+          uploadPromises.push(
+            uploadToCloudinary(bookCover).then(url => { bookCoverUrl = url; })
+          );
+        }
+    
+        // Delete previous book file and upload a new one if provided
+        if (bookFile) {
+          if (existingBook.bookFile) {
+            await  deleteNAFileFromCloudinary(existingBook.bookFile);
+          }
+          uploadPromises.push(
+            uploadToCloudinary(bookFile).then(url => { bookFileUrl = url; })
+          );
+        }
+    
+        if (uploadPromises.length > 0) {
+          await Promise.all(uploadPromises);
+        }
+    
+        console.log("Authenticated user:", req.user);
+    
+        const [updatedRows, updatedBooks] = await Book.update(
           {
-            bookCover: bookCoverUrl || existingBook.bookCover,
-            bookName: bookName || existingBook.bookName,
-            bookDescription: bookDescription || existingBook.bookDescription,
-            bookAuthor: bookAuthor || existingBook.bookAuthor,
-            bookCategory: bookCategory || existingBook.bookCategory,
-            bookLanguage: bookLanguage || existingBook.bookLanguage,
-            bookFile: bookFileUrl || existingBook.bookFile
+            bookCover: bookCoverUrl,
+            bookName,
+            bookDescription,
+            bookAuthor,
+            bookCategory,
+            bookLanguage,
+            bookFile: bookFileUrl
           },
-          { where: { id: args.id } }
+          { where: { id }, returning: true }
         );
-        if (updateCount === 0) {
-          throw new Error('No changes detected');
+    
+        if (updatedRows === 0) {
+          return { success: false, message: "No updates were made" };
         }
-        return { success: true, message: 'Book info updated successfully' };
+    
+        console.log("Book updated:", updatedBooks[0]);
+        return { success: true, message: "Book info updated successfully", data: updatedBooks[0] };
+    
       } catch (error) {
-        console.error('Error updating book:', error.message);
+        console.error("Error updating book:", error.message);
         return { success: false, message: `Error updating book: ${error.message}` };
       }
-    },
+    },    
+    
 
     deleteBook: async (_, { id }, { req }) => {
       if (!req?.user) {
@@ -207,7 +238,7 @@ export const resolvers = {
       if (book.bookFile) {
         console.log(`Deleting book file: ${book.bookFile}`);
         deletionTasks.push(
-          deleteFileFromCloudinary(book.bookFile)
+          deleteNAFileFromCloudinary(book.bookFile)
             .then(() => console.log('Book file deleted from Cloudinary.'))
             .catch((error) => console.error('Failed to delete book file:', error.message))
         );

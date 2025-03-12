@@ -95,3 +95,33 @@ cloudinary.config({
 
 
 
+      export const deleteNAFileFromCloudinary = async (url) => {
+        try {
+          if (!url) {
+            throw new Error('No URL provided.');
+          }
+          console.log(`Extracting public ID from URL: ${url}`);
+          const decodedUrl = decodeURIComponent(url)
+          const publicId = `literalouge/${decodedUrl}`; 
+      
+          console.log(`Attempting to delete Cloudinary file with public ID: ${publicId}`);
+      
+          const deletionResult = await cloudinary.uploader.destroy(publicId, {
+            resource_type: "raw", 
+          });
+      
+          console.log("Cloudinary deletion result:", deletionResult);
+      
+          if (deletionResult.result === "ok") {
+            console.log(`Cloudinary file "N/A" deleted successfully.`);
+            return { success: true, message: `File "N/A" deleted successfully.` };
+          } else {
+            console.log(`Cloudinary deletion failed: ${JSON.stringify(deletionResult)}`);
+            return { success: false, message: `Failed to delete file: ${JSON.stringify(deletionResult)}` };
+          }
+        } catch (error) {
+          console.error(`Error deleting "N/A" file from Cloudinary:`, error.message);
+          return { success: false, message: `Cloudinary deletion error: ${error.message}` };
+        }
+      };
+      
